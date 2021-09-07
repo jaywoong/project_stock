@@ -77,7 +77,7 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 |     Back-end     | 서미오 | https://github.com/mmeooo |
 | Machine-Learning | 송건룡 |                           |
 |    Front-end     | 김병현 |                           |
-|     Back-end     | 유준융 |                           |
+|     Back-end     | 유준웅 |                           |
 
 
 
