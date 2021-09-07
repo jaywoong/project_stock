@@ -73,11 +73,11 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
 |       Role       |  Name  |          GitHub           |
 | :--------------: | :----: | :-----------------------: |
-|        PM        | 이재웅 |                           |
+|        PM        | 이재웅 | https://github.com/jaywoong |
 |     Back-end     | 서미오 | https://github.com/mmeooo |
 | Machine-Learning | 송건룡 |                           |
 |    Front-end     | 김병현 |                           |
-|     Back-end     | 유준융 |                           |
+|     Back-end     | 유준웅 |                           |
 
 
 
