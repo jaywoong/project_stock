@@ -23,7 +23,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('index.html', views.index, name='index'),
     path('main.html', views.main, name='main'),
-    path('inner-page.html', views.inner, name='inner'),
+    # path('inner-page.html', views.inner, name='inner'),
 
 
 ]
