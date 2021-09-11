@@ -2,7 +2,9 @@
 
 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
 
+<img src="https://img.shields.io/static/v1?label=MultiCampus&message=2조&color=olive">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=blueviolet">
 
+<br>
 
 #### **:bulb: 최종 구현**
 
@@ -12,7 +14,7 @@
 
 ---
 
-
+<br>
 
 ### Table of Contents
 
@@ -28,7 +30,7 @@
 
 
 
-
+<br>
 
 ## :mag: Overview <a id="idx1"></a> 
 
@@ -48,33 +50,35 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
 - #### **필요성** 
 
-투자자의 성향을 고려하지 않고 개별종목과 포트폴리오를추천해줄 경우 손실을 인내하기 쉽지 않으므로 투자자에게 최적화된 포트폴리오를 추천해 주어야 한다. 이를 위해 개별주의 미래 종가를 예측하고, 예상 가격, 변동성, 리스크등을 고려하여 포트폴리오를 구성하는 모델을 구축한다. 가격예측 모델과 포트폴리오 모델을 활용하여 고객의투자 성향 및 보유 종목에 따른 투자 포트폴리오 추천 서비스를 제공한다.
+투자자의 성향을 고려하지 않고 개별종목과 포트폴리오를 추천해 줄 경우  손실을 인내하기 쉽지 않다.  따라서 개별주의 미래 종가를 예측하고,  예상 가격, 변동성, 리스크 등을 고려하여 투자자에게 최적화된 포트폴리오를 구성하는 모델을 구축하고자 한다. 가격예측 모델과 포트폴리오 모델을 활용하여,  고객의 투자 성향 및 보유 종목에 따른 주식 포트폴리오 추천 서비스를 제공하려 한다.
 
 
 
 - #### 주요 기능
 
-1. 주식 종가 예측
-2. 사용자 투자 성향 조사
-3. 사용자 맞춤 주식 포트폴리오 추천
+1. **주식 종가 예측 :seedling: :**
+2. **사용자 투자 성향 조사 :eyes: :**
+3. **사용자 맞춤 주식 포트폴리오 추천 :gift: :** 
 
 
 
-
+<br>
 
 ##  :shamrock: Process <a id= 'idx2'></a>
 
 - #### Service Architecture
 
+  <br>
+
 - #### ERD
+
+  <br>
 
 - #### 요구사항 정의서
 
 
 
-
-
-
+<br>
 
  ## :book: Skills <a id="idx3"></a>
 
@@ -82,8 +86,8 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
 | Domain    | Name             | Comment         |
 | --------- | ---------------- | --------------- |
-| Frontend  | HTML             |                 |
-| Frontend  | CSS              |                 |
+| Frontend  | HTML             | 페이지 구현     |
+| Frontend  | CSS              | 페이지 디자인   |
 | Frontend  | JS               |                 |
 | Frontend  | Ajax             |                 |
 | Backend   | Python           |                 |
@@ -93,8 +97,8 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 | 개발 환경 | Pycharm          |                 |
 | 개발 환경 | Jupyter Notebook |                 |
 | 협업      | Github           |                 |
-| 협업      | Zoom             |                 |
 | 협업      | Google Docs      |                 |
+| 협업      | Zoom             |                 |
 | 배포      | Groom.io         |                 |
 
 
@@ -103,6 +107,7 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
   - Scikit-Learn
   - Keras
+  - LSTM
   - Word2Vec
   - pandas
   - numpy
@@ -117,7 +122,7 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
 
 
-
+<br>
 
 ## :dancers: Team  <a id="idx4"></a>
 
@@ -131,7 +136,7 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 
 
 
-
+<br>
 
 ## :clock2: Project Scheduling <a id="idx5"></a>
 
