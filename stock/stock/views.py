@@ -10,5 +10,7 @@ def getdata(request):
     return render(request, 'getdata.html')
 def team(request):
     return render(request, 'team.html')
+def news(request):
+    return render(request, 'news.html')
 # def inner(request):
 #     return render(request, 'inner-page.html')

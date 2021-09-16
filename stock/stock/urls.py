@@ -25,6 +25,7 @@ urlpatterns = [
     path('main.html', views.main, name='main'),
     path('getdata.html', views.getdata, name='getdata'),
     path('team.html', views.team, name='team'),
+    path('news.html', views.news, name='news'),
     # path('inner-page.html', views.inner, name='inner'),
 
 
