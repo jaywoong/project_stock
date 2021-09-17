@@ -106,11 +106,13 @@ https://kr.investing.com/indices/nasdaq-composite-historical-data
 - #### 주요 라이브러리
 
   - Scikit-Learn
+  - TensorFlow
   - Keras
   - LSTM
+  - FBProphet
   - Word2Vec
-  - pandas
-  - numpy
+  - Pandas
+  - Numpy
   - Selenium, Beautifulsoup
   - Matplotlib
 
