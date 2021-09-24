@@ -24,7 +24,7 @@ class KRX:
 
     def saving(self):
         self.df = pd.concat([self.volume, self.per, self.value], axis=1)
-        self.df.to_sql('samsung', conn, if_exists='replace') # 테이블명
+        self.df.to_sql('samsung', conn, if_exists='append') # 테이블명
         conn.commit()  # db에 저장
 
 
@@ -39,11 +39,11 @@ class INVESTING:
         self.cboe = fdr.DataReader('VIX', self.start, self.end)
         self.cboe = self.cboe[['Close']].rename(columns={'Close':'CBOE'})
         self.rate = fdr.DataReader('USD/KRW', self.start, self.end)
-        self.rate  = self.rate[['Close']].rename(columns={'Close':'Exchange rate'})
+        self.rate  = self.rate[['Close']].rename(columns={'Close':'ExchangeRate'})
 
     def saving(self):
         self.df = pd.concat([self.sp500, self.cboe, self.rate], axis=1)
-        self.df.to_sql('samsung', conn, if_exists='replace')
+        self.df.to_sql('samsung', conn, if_exists='append')
         conn.commit()  # db에 저장
 
 
@@ -56,13 +56,13 @@ class INVESTINGCRAWL:
         self.driver.get(url)
         self.soup = BeautifulSoup(self.driver.page_source, 'html.parser')
         self.index = self.soup.select('#last_last')
-        self.contents.append([self.index[0].text.strip()])
+        self.contents.append(self.index[0].text.strip())
         del self.soup
         self.driver.quit()
 
     def saving(self):
         self.df = pd.DataFrame(self.contents, index=['futures2y', 'futures10y']).transpose()
-        self.df.to_sql('samsung', conn, if_exists='replace')
+        self.df.to_sql('samsung', conn, if_exists='append')
         conn.commit()
 
 
@@ -73,10 +73,10 @@ if __name__ == "__main__":
     krx.getStock(code)
     krx.saving()
 
-    # invest = INVESTING()
-    # invest.getDate()
-    # invest.getStock()
-    # invest.saving()
+    invest = INVESTING()
+    invest.getDate()
+    invest.getStock()
+    invest.saving()
 
     # crawl = INVESTINGCRAWL()
     # us2yr = 'https://kr.investing.com/rates-bonds/us-2-yr-t-note-historical-data'
