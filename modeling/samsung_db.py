@@ -7,11 +7,10 @@ from pykrx import stock
 import FinanceDataReader as fdr
 from datetime import date, datetime, timedelta
 
-# class EXIST:
-#     def getData(self):
-#         self.df_excel = pd.read_excel('C:\Develops\mainproject_stock\modeling\data\samsung.xlsx')
-#         self.df_excel.to_sql('samsung', conn, if_exists='append')
-
+class EXIST:
+    def getData(self):
+        self.df_excel = pd.read_excel('C:\Develops\mainproject_stock\modeling\data\samsung.xlsx')
+        self.df_excel.to_sql('samsung', conn, if_exists='append')
 
 class KRX:
     def getDate(self):
@@ -99,7 +98,7 @@ if __name__ == "__main__":
     conn = sqlite3.connect('samsung.db')  # db파일 생성
     c = conn.cursor()  # db에 연결하는 cursor
 
-    # ex = EXIST()
+    ex = EXIST()
 
     code = "005930"  # 종목코드
     krx = KRX()

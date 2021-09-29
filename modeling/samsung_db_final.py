@@ -13,6 +13,7 @@ from pykrx import stock
 import FinanceDataReader as fdr
 from datetime import date, datetime, timedelta
 
+
 def loadData():
     try:
         file = pd.read_excel('C:\Develops\mainproject_stock\modeling\data\samsung.xlsx')
