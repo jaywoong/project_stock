@@ -19,18 +19,24 @@ class KRX:
         self.start = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 어제
 
     def getStock(self, code):
-        self.volume = stock.get_market_ohlcv_by_date(self.start, self.end, code)
-        self.volume = self.volume[['거래량']]
-        self.per = stock.get_market_fundamental_by_date(self.start, self.end, code)
-        self.per = self.per[['PER', 'PBR']]
-        self.v = stock.get_market_trading_value_by_date(self.start, self.end, code)
-        self.value = self.v.drop(['전체'], axis=1)
+        try:
+            self.volume = stock.get_market_ohlcv_by_date(self.start, self.end, code)
+            self.volume = self.volume[['거래량']]
+            self.per = stock.get_market_fundamental_by_date(self.start, self.end, code)
+            self.per = self.per[['PER', 'PBR']]
+            self.v = stock.get_market_trading_value_by_date(self.start, self.end, code)
+            self.value = self.v.drop(['전체'], axis=1)
+        except:
+            pass
 
-    def saving(self):
+    def setData(self):
         self.df = pd.concat([self.volume, self.per, self.value], axis=1)
         self.df_krx = self.df.reset_index()
-        self.df_krx.columns=['date', 'volume', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
+        self.df_krx.columns = ['date', 'volume', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
         self.df_krx = self.df_krx.set_index('date')
+        return self.df_krx
+
+    def saving(self):
         self.df_krx.to_sql('samsung', conn, if_exists='append') # 테이블명
         conn.commit()  # db에 저장
 
@@ -41,18 +47,23 @@ class INVESTING:
         self.start = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 어제
 
     def getStock(self):
-        self.sp500 = fdr.DataReader('US500', self.start, self.end)
-        self.sp500 = self.sp500[['Close']]
-        self.cboe = fdr.DataReader('VIX', self.start, self.end)
-        self.cboe = self.cboe[['Close']]
-        self.rate = fdr.DataReader('USD/KRW', self.start, self.end)
-        self.rate  = self.rate[['Close']]
+        try:
+            self.sp500 = fdr.DataReader('US500', self.start, self.end)
+            self.sp500 = self.sp500[['Close']]
+            self.cboe = fdr.DataReader('VIX', self.start, self.end)
+            self.cboe = self.cboe[['Close']]
+            self.rate = fdr.DataReader('USD/KRW', self.start, self.end)
+            self.rate  = self.rate[['Close']]
+        except:
+            pass
 
-    def saving(self):
+    def setData(self):
         self.df = pd.concat([self.sp500, self.cboe, self.rate], axis=1)
         self.df_invest = self.df.reset_index()
         self.df_invest.columns = ['date', 'sp', 'cboe', 'exchangerate']
         self.df_invest = self.df_invest.set_index('date')
+
+    def saving(self):
         self.df_invest.to_sql('samsung', conn, if_exists='append')
         conn.commit()  # db에 저장
 
@@ -72,11 +83,14 @@ class INVESTINGCRAWL:
         del self.soup
         self.driver.quit()
 
-    def saving(self):
+    def setData(self):
         self.date = pd.DatetimeIndex([datetime.today().date()])
         self.df = pd.DataFrame([self.contents], self.date, ['futures2y', 'futures10y'])
         self.df = self.df.reset_index().rename(columns={'index': 'date'})
         self.df_crawl = self.df.set_index('date')
+
+
+    def saving(self):
         self.df_crawl.to_sql('samsung', conn, if_exists='append')
         conn.commit()
 
@@ -84,17 +98,20 @@ class INVESTINGCRAWL:
 if __name__ == "__main__":
     conn = sqlite3.connect('samsung.db')  # db파일 생성
     c = conn.cursor()  # db에 연결하는 cursor
+
     # ex = EXIST()
 
     code = "005930"  # 종목코드
     krx = KRX()
     krx.getDate()
     krx.getStock(code)
+    krx.setData()
     krx.saving()
 
     invest = INVESTING()
     invest.getDate()
     invest.getStock()
+    invest.setData()
     invest.saving()
 
     crawl = INVESTINGCRAWL()
