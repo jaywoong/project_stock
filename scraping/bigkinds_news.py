@@ -100,7 +100,7 @@ if __name__ == "__main__":
     c = conn.cursor()
 
     url = 'https://www.bigkinds.or.kr/v2/news/index.do'
-    querytxt = '농심'
+    querytxt = '오리온'
     crawl = Bigkinds()
     crawl.crawling(url, querytxt)
     crawl.saving(querytxt)
