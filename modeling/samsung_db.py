@@ -2,7 +2,7 @@
 # 기존 컬럼명
 #'DATE', '거래량', 'PER','PBR','기관합계', '기타법인','개인','외국인합계', 'NASDAQ','S&P','CBOE', 'Exchange rate','futures2y','futures10y, 'y'
 # 바뀐 컬럼명
-# date, high, low, y, volume, atr / per, pbr, institution, corp, retail, foreign / nasdaq, sp, cboe, exchangerate, futures2y, futures10y,
+# date, y, volume, atr / per, pbr, institution, corp, retail, foreign / nasdaq, sp, cboe, exchangerate, futures2y, futures10y,
 
 import sqlite3
 import pandas as pd
@@ -102,7 +102,7 @@ if __name__ == "__main__":
 
     update = UpdateDB()  # 클래스 선언
     update.loadData()  # 기존 데이터 엑셀파일 db에 저장
-    update.getKRX("005930")  # y, volume, per, pbr, institution, corp, retail, foreign
+    update.getKRX("005930")  # y, volume, atr, per, pbr, institution, corp, retail, foreign
     update.getINVEST()  # sp, cboe, exchangerate
     update.crawlINVEST()  # nasdaq, futures2y, futures10y
     update.saving()  # db에 최종 저장
