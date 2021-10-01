@@ -90,10 +90,9 @@ class Bigkinds:
         self.driver.close()
         self.df_news = pd.DataFrame(data=self.contents, columns =['title', 'press', 'category', 'date'])
         self.df_news['text'] = self.texts
-        self.df_news.to_sql('{}_news'.format(querytxt), conn, if_exists='append')  # 테이블명
+        self.df_news.to_sql('{}_news'.format(querytxt), conn, if_exists='append', index=False)  # 테이블명
         conn.commit()
         conn.close()
-        # self.df_news.to_excel("C:/Develops/tt.xlsx", index=False)
 
 
 if __name__ == "__main__":
