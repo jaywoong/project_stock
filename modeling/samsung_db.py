@@ -34,9 +34,9 @@ class UpdateDB:
     def getKRX(self, code):
         def getATR():
             df_atr = stock.get_market_ohlcv_by_date(self.bfyday, self.tday, code).drop(['시가', '거래량'], axis=1)
-            a = df_atr.iloc[1, 0] - df_atr.iloc[1, 1]  # 고가-저가
-            b = df_atr.iloc[1, 0] - df_atr.iloc[0, 2]  # 고가-전날종가
-            c = df_atr.iloc[1, 1] - df_atr.iloc[0, 2]  # 저가-전날종가
+            a = df_atr['고가'][0] - df_atr['저가'][0]  # 고가-저가
+            b = df_atr['고가'][0] - df_atr['종가'][1]  # 고가-전날종가
+            c = df_atr['저가'][0] - df_atr['종가'][1]  # 저가-전날종가
             lst = [abs(a), abs(b), abs(c)]
             return max(lst)
         self.ohlcv = stock.get_market_ohlcv_by_date(self.yday, self.tday, code)[['종가', '거래량']]
