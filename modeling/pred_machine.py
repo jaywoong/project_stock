@@ -132,8 +132,8 @@ def pred_machine():
 
 
 pred_machine()
-schedule.every().hour.do(pred_machine)
-# schedule.every().day.at("6:00").do(pred_machine)
+# schedule.every().hour.do(pred_machine)
+schedule.every().day.at("6:00").do(pred_machine)
 
 while True:
     schedule.run_pending()
