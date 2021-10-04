@@ -1,23 +1,22 @@
 import sqlite3
-
+import schedule
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
 
-
 class Bigkinds:
     def __init__(self):
         self.options = Options()
         # headless는 화면이나 페이지 이동을 표시하지 않고 동작하는 모드 (브라우저 창 안보이기)
-        #self.options.add_argument('headless')
+        self.options.add_argument('headless')
         self.driver = webdriver.Chrome('C:\chromedriver.exe', options=self.options)
 
     def getURL(self,url):
         # 빅카인즈 사이트 이동
         self.driver.implicitly_wait(2)
-        self.driver.set_window_size(1300,800)
+        self.driver.set_window_size(1300, 700)
         self.driver.get(url)
         # 검색기간 1주일로 설정
         self.driver.find_element_by_xpath('//*[@id="collapse-step-1-body"]/div[3]/div/div[1]/div[1]/a').click()
@@ -44,8 +43,9 @@ class Bigkinds:
         self.totalPage  = int(pageNum)
         del soup
 
-    def crawling(self, url, querytxt):
-        self.getPage(url, querytxt)
+    def crawling(self, url, stockname):
+        self.getPage(url, stockname)
+        print('{} crawling start.'.format(stockname))
         print('Total Pages : ', self.totalPage)
         curPage = 1  # 현재 페이지
         self.contents = []
@@ -75,33 +75,51 @@ class Bigkinds:
             # 페이지 수 증가
             curPage += 1
             if curPage > self.totalPage:
-                print('Crawling succeed')
+                print('{} crawling succeed.'.format(stockname))
                 break
             # 페이지 이동 클릭
             self.driver.implicitly_wait(3)
-            nextbtn = self.driver.find_element_by_xpath('//*[@id="news-results-tab"]/div[6]/div[1]/div/div/div/div[4]/a')
+            try:
+                nextbtn = self.driver.find_element_by_xpath('//*[@id="news-results-tab"]/div[1]/div[2]/div/div/div/div/div[4]/a')
+            except:
+                nextbtn = self.driver.find_element_by_xpath('//*[@id="news-results-tab"]/div[6]/div[2]/div/div/div/div/div[4]/a')
             self.driver.execute_script("arguments[0].click();", nextbtn)
             # bs4 인스턴스 삭제
             del soup
             time.sleep(2)
 
-    def saving(self, querytxt):
+    def saving(self, stockname):
         # 브라우저 종료
         self.driver.close()
         self.df_news = pd.DataFrame(data=self.contents, columns =['title', 'press', 'category', 'date'])
         self.df_news['text'] = self.texts
-        self.df_news.to_sql('{}_news'.format(querytxt), conn, if_exists='append', index=False)  # 테이블명
+        self.df_news.to_sql('{}_news'.format(stockname), conn, if_exists='append', index=False)  # 테이블명
         conn.commit()
-        conn.close()
-        print('Data inserted to DB.')
+        print('{} inserted to DB.'.format(stockname))
+
 
 
 if __name__ == "__main__":
     conn = sqlite3.connect('bigkinds.db')
     c = conn.cursor()
 
-    url = 'https://www.bigkinds.or.kr/v2/news/index.do'
-    querytxt = '오리온'
-    crawl = Bigkinds()  # 클래스 선언
-    crawl.crawling(url, querytxt)
-    crawl.saving(querytxt)
+    def crawl():
+        # stocknames = ['삼성전자', 'SK하이닉스', 'LG화학', 'LG전자', 'LG이노텍', '삼성에스디에스', '삼성전기', '삼성생명', '삼성화재',
+        #               'SK텔레콤', 'KT', '현대건설', '삼성엔지니어링', '대한항공', '현대차', '기아', '오리온', 'CJ제일제당', '오뚜기',
+        #               '미래에셋대우', '한국금융지주', 'NH투자증권', 'LG생활건강', '아모레퍼시픽', '아모레G', '강원랜드', '호텔신라',
+        #               'KB금융', '신한지주,' '하나금융지주', ' 롯데쇼핑', '이마트', '신세계', 'GS리테일', 'NAVER', '카카오', 'CJ ENM',
+        #               '스튜디오드래곤', '삼성바이오로직스', '셀트리온', '한미약품', '엔씨소프트', '넷마블', '한화솔루션', 'LS', 'POSCO',
+        #               '고려아연', 'S-Oil', 'SK이노베이션', 'HMM']
+        stocknames = ['NH투자증권', 'LG생활건강', '아모레퍼시픽']
+        url = 'https://www.bigkinds.or.kr/v2/news/index.do'
+        for stockname in stocknames:
+            crawl = Bigkinds()
+            crawl.crawling(url, stockname)
+            crawl.saving(stockname)
+        conn.close()
+
+    schedule.every(1).minutes.do(crawl)  # 1분마다 동작
+    #schedule.every().monday.at("5:30").do(crawl)  # 매주 월요일 5:30에 동작
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
