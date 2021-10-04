@@ -93,6 +93,7 @@ class Bigkinds:
         self.df_news.to_sql('{}_news'.format(querytxt), conn, if_exists='append', index=False)  # 테이블명
         conn.commit()
         conn.close()
+        print('Data inserted to DB.')
 
 
 if __name__ == "__main__":
@@ -101,6 +102,6 @@ if __name__ == "__main__":
 
     url = 'https://www.bigkinds.or.kr/v2/news/index.do'
     querytxt = '오리온'
-    crawl = Bigkinds()
+    crawl = Bigkinds()  # 클래스 선언
     crawl.crawling(url, querytxt)
     crawl.saving(querytxt)

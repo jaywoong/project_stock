@@ -19,6 +19,7 @@ class UpdateDB:
     def __init__(self):
         self.tday = date.today().strftime('%Y%m%d')  # 오늘
         self.yday = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 어제
+        self.bfyday = (date.today() - timedelta(2)).strftime('%Y%m%d')  # 그저께
         self.options = Options()
         self.options.add_argument('headless')
         self.contents = []
@@ -32,16 +33,27 @@ class UpdateDB:
             file.to_sql('samsung', conn, if_exists='append')
 
     def getKRX(self, code):  # KRX 데이터
-        self.ohlcv = stock.get_market_ohlcv_by_date(self.yday, self.tday, code)[['종가','거래량']]
-        self.per = stock.get_market_fundamental_by_date(self.yday, self.tday, code)[['PER', 'PBR']]
-        self.value = stock.get_market_trading_value_by_date(self.yday, self.tday, code).drop(['전체'], axis=1)
-        # 개별주관련지표 중 기관합계,기타법인,개인,외국인합계는 데이터 업데이트가 늦음
-        # -> 당일 16:30?쯤 업데이트 됨
+        self.stockname = stock.get_market_ticker_name(code)
+        def getATR():
+            df_atr = stock.get_market_ohlcv_by_date(self.bfyday, self.tday, code).drop(['시가', '거래량'], axis=1)
+            a = df_atr['고가'][0] - df_atr['저가'][0]  # 고가-저가
+            b = df_atr['고가'][0] - df_atr['종가'][1]  # 고가-전날종가
+            c = df_atr['저가'][0] - df_atr['종가'][1]  # 저가-전날종가
+            lst = [abs(a), abs(b), abs(c)]
+            return max(lst)
+        self.ohlcv = stock.get_market_ohlcv_by_date(self.yday, self.tday, code)[['종가', '거래량']]
+        self.ohlcv['ATR'] = getATR()
+        self.per = stock.get_market_fundamental_by_date(self.tday, self.tday, code)[['PER', 'PBR']]
+        try:
+            self.value = stock.get_market_trading_value_by_date(self.tday, self.tday, code).drop(['전체'], axis=1)
+        except:
+            print('개별주관련지표 중 기관합계,기타법인,개인,외국인합계는 당일 16:30쯤 업데이트 됩니다.')
+            self.value = pd.DataFrame(columns=['institution', 'corp', 'retail', 'foreign'])
         df_krx = pd.concat([self.ohlcv, self.per, self.value], axis=1).reset_index()
-        df_krx.columns = ['date', 'y', 'volume', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
+        df_krx.columns = ['date', 'y', 'volume', 'atr', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
         self.df_krx = df_krx.set_index('date')
-        print('getKRX complete.')
         return self.df_krx
+
 
     def getINVEST(self):  # Investing.com 데이터
         self.sp500 = fdr.DataReader('US500', self.yday, self.tday,)[['Close']]
@@ -77,21 +89,20 @@ class UpdateDB:
     def saving(self):  # 데이터 합쳐서 db에 저장
         tmp = pd.merge(self.df_krx, self.df_invest, on='date')
         self.df_merge = pd.merge(tmp, self.df_crawl, on='date')
-        self.df_merge.to_sql('samsung', conn, if_exists='append') # 테이블명
+        self.df_merge.to_sql('{}'.format(self.stockname), conn, if_exists='append') # 테이블명
         conn.commit()
         conn.close()
-        print('data inserted to DB.')
+        print('Data inserted to DB.')
 
 
 if __name__ == "__main__":
-    conn = sqlite3.connect('samsung.db')
+    conn = sqlite3.connect('stock.db')
     c = conn.cursor()
-
-    UpdateDB().loadData()  # 기존 데이터
 
     def updateDB():
         update = UpdateDB()   # 클래스 선언
-        update.getKRX("005930")  # y, volume, per, pbr, institution, corp, retail, foreign
+        code = ""
+        update.getKRX(code)  # y, volume, per, pbr, institution, corp, retail, foreign
         update.getINVEST()  # sp, cboe, exchangerate
         update.crawlINVEST()  # nasdaq, futures2y, futures10y
         update.saving()  # db에 최종 저장

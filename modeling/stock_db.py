@@ -32,6 +32,7 @@ class UpdateDB:
 
 
     def getKRX(self, code):
+        self.stockname = stock.get_market_ticker_name(code)
         def getATR():
             df_atr = stock.get_market_ohlcv_by_date(self.bfyday, self.tday, code).drop(['시가', '거래량'], axis=1)
             a = df_atr['고가'][0] - df_atr['저가'][0]  # 고가-저가
@@ -90,19 +91,21 @@ class UpdateDB:
     def saving(self):
         df = pd.merge(self.df_krx, self.df_invest, on='date')
         self.df_merge = pd.merge(df, self.df_crawl, on='date')
-        self.df_merge.to_sql('samsung', conn, if_exists='append') # 테이블명
+        self.df_merge.to_sql('{}'.format(self.stockname), conn, if_exists='append') # 테이블명
         conn.commit()
         conn.close()
-        print('data inserted to DB.')
+        print('Data inserted to DB.')
 
 
 if __name__ == "__main__":
-    conn = sqlite3.connect('samsung.db')
+    conn = sqlite3.connect('stock.db')
     c = conn.cursor()
 
     update = UpdateDB()  # 클래스 선언
     update.loadData()  # 기존 데이터 엑셀파일 db에 저장
-    update.getKRX("005930")  # y, volume, atr, per, pbr, institution, corp, retail, foreign
+
+    code = ""
+    update.getKRX(code)  # y, volume, atr, per, pbr, institution, corp, retail, foreign
     update.getINVEST()  # sp, cboe, exchangerate
     update.crawlINVEST()  # nasdaq, futures2y, futures10y
     update.saving()  # db에 최종 저장
