@@ -25,199 +25,26 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="8dc64255-2336-44f4-bd1c-3b7fcd19b3c0">
-        <schema name="main" object-types="table, view" />
+      <connection connection-id="b9a3974b-1180-4704-99df-19eecefdaca9">
+        <schema name="main" object-types="table, view, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="8dc64255-2336-44f4-bd1c-3b7fcd19b3c0">
-      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[DROP TABLE user;
-
-CREATE TABLE user (
-	user_id	int	NOT NULL,
-	member_password	varchar(255)	NOT NULL,
-	member_email	varchar(128)	NOT NULL,
-	member_name	varchar(128)	NOT NULL
-);
-
-DROP TABLE likes;
-
-CREATE TABLE likes (
-	likes_id	int	NOT NULL,
-	user_id	int	NOT NULL,
-	likes_age	int	NOT NULL,
-	likes_yearafter	int	NOT NULL,
-	likes_amount	int	NOT NULL,
-	likes_matters	varchar(128)	NOT NULL,
-	likes_lossaction	varchar(128)	NOT NULL
-);
-
-DROP TABLE type;
-
-CREATE TABLE type (
-	type_id	int	NOT NULL,
-	likes_id	int	NOT NULL,
-	user_id	int	NOT NULL,
-	type_name	varchar(128)	NOT NULL,
-	type_risklevel	int	NOT NULL
-);
-
-DROP TABLE stock;
-
-CREATE TABLE stock (
-	stock_id	int	NOT NULL,
-	company_id	int	NOT NULL,
-	stock_name	varchar(128)	NOT NULL,
-	stock_type	varchar(128)	NOT NULL,
-	stock_pastyield	int	NOT NULL,
-	stock_futureyield	int	NOT NULL,
-	stock_futureprice	int	NOT NULL,
-	stock_netsell	int	NOT NULL,
-	stock_netbuy	int	NOT NULL,
-	stock_closingprice	int	NOT NULL,
-	stock_highprice	int	NOT NULL,
-	stock_lowprice	int	NOT NULL,
-	stock_per	int	NOT NULL,
-	stock_pbr	int	NOT NULL
-);
-
-DROP TABLE portfolio;
-
-CREATE TABLE portfolio (
-	portfolio_id	int	NOT NULL,
-	type_id	int	NOT NULL,
-	likes_id	int	NOT NULL,
-	user_id	int	NOT NULL,
-	stock_id	int	NOT NULL,
-	company_id	int	NOT NULL,
-	portfolio_ratio	int	NOT NULL,
-	portfolio_amout	int	NOT NULL,
-	portfolio_futureyield	int	NOT NULL,
-	portfolio_risk	int	NOT NULL,
-	Field	VARCHAR(255) NOT NULL
-);
-
-DROP TABLE company;
-
-CREATE TABLE company (
-	company_id	int	NOT NULL,
-	company_name	varchar(128)	NOT NULL,
-	company_gas	int	NOT NULL,
-	company_energy	int	NOT NULL,
-	company_dust	int	NOT NULL,
-	company_donation	int	NOT NULL,
-	company_employeerate	int	NOT NULL,
-	company_boardrate	int	NOT NULL,
-	company_wagerate	int	NOT NULL
-);
-
-ALTER TABLE user ADD CONSTRAINT PK_USER PRIMARY KEY (
-	user_id
-);
-
-ALTER TABLE likes ADD CONSTRAINT PK_LIKES PRIMARY KEY (
-	likes_id,
-	user_id
-);
-
-ALTER TABLE type ADD CONSTRAINT PK_TYPE PRIMARY KEY (
-	type_id,
-	likes_id,
-	user_id
-);
-
-ALTER TABLE stock ADD CONSTRAINT PK_STOCK PRIMARY KEY (
-	stock_id,
-	company_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT PK_PORTFOLIO PRIMARY KEY (
-	portfolio_id,
-	type_id,
-	likes_id,
-	user_id,
-	stock_id,
-	company_id
-);
-
-ALTER TABLE company ADD CONSTRAINT PK_COMPANY PRIMARY KEY (
-	company_id
-);
-
-ALTER TABLE likes ADD CONSTRAINT FK_user_TO_likes_1 FOREIGN KEY (
-	user_id
-)
-REFERENCES user (
-	user_id
-);
-
-ALTER TABLE type ADD CONSTRAINT FK_likes_TO_type_1 FOREIGN KEY (
-	likes_id
-)
-REFERENCES likes (
-	likes_id
-);
-
-ALTER TABLE type ADD CONSTRAINT FK_likes_TO_type_2 FOREIGN KEY (
-	user_id
-)
-REFERENCES likes (
-	user_id
-);
-
-ALTER TABLE stock ADD CONSTRAINT FK_company_TO_stock_1 FOREIGN KEY (
-	company_id
-)
-REFERENCES company (
-	company_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT FK_type_TO_portfolio_1 FOREIGN KEY (
-	type_id
-)
-REFERENCES type (
-	type_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT FK_type_TO_portfolio_2 FOREIGN KEY (
-	likes_id
-)
-REFERENCES type (
-	likes_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT FK_type_TO_portfolio_3 FOREIGN KEY (
-	user_id
-)
-REFERENCES type (
-	user_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT FK_stock_TO_portfolio_1 FOREIGN KEY (
-	stock_id
-)
-REFERENCES stock (
-	stock_id
-);
-
-ALTER TABLE portfolio ADD CONSTRAINT FK_stock_TO_portfolio_2 FOREIGN KEY (
-	company_id
-)
-REFERENCES stock (
-	company_id
-);]]></console>
-    </connection>
-    <connection id="facae195-e661-43e8-a745-3934a48f9415">
-      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
+    <connection id="b9a3974b-1180-4704-99df-19eecefdaca9">
+      <console name="Connection 2" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="8dc64255-2336-44f4-bd1c-3b7fcd19b3c0" />
-    <connection id="facae195-e661-43e8-a745-3934a48f9415" />
+    <connection id="b9a3974b-1180-4704-99df-19eecefdaca9" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="b9a3974b-1180-4704-99df-19eecefdaca9" dataset="main.NH투자증권_news" active-filter-id="" />
+    <filter-actions connection-id="b9a3974b-1180-4704-99df-19eecefdaca9" dataset="main.LG생활건강_news" active-filter-id="" />
+    <filter-actions connection-id="b9a3974b-1180-4704-99df-19eecefdaca9" dataset="main.오리온_news" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -245,9 +72,9 @@ REFERENCES stock (
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="8dc64255-2336-44f4-bd1c-3b7fcd19b3c0" active="true">
+      <connection id="b9a3974b-1180-4704-99df-19eecefdaca9" active="true">
         <database>
-          <name value="Connection" />
+          <name value="Connection 2" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
@@ -260,93 +87,9 @@ REFERENCES stock (
           <port value="" />
           <database value="" />
           <files>
-            <file path="sqlite.db" schema="main" />
+            <file path="C:\Users\me\Desktop\mainproject_stock-9fa7d5dbc23d0722cbd6b333df5bd5dc78926a02\scraping\bigkinds.db" schema="main" />
           </files>
           <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <connectivity-timeout value="5" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="facae195-e661-43e8-a745-3934a48f9415" active="true">
-        <database>
-          <name value="Connection 1" />
-          <description value="" />
-          <database-type value="MYSQL" />
-          <config-type value="BASIC" />
-          <database-version value="9999.0" />
-          <driver-source value="BUILTIN" />
-          <driver-library value="" />
-          <driver value="" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="3306" />
-          <database value="mysql" />
-          <type value="USER_PASSWORD" />
           <user value="" />
           <deprecated-pwd value="" />
         </database>
