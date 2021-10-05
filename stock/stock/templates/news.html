@@ -28,8 +28,6 @@
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/box.css' %}"/>
 
-
-
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -121,25 +119,34 @@
           </div>
         </div>
 
+
+        <!----- News List ----->
         <div>
-
-    {% for row in erows %}
-
-    <p>{{row.date}}</p>
-    <p>{{row.press}}</p>
-    <p>{{row.category}}</p>
-    <p>{{row.text}}</p>
-    <p>{{row.title}}</p>
-
-    {% endfor %}
-
+          <h3> Number of Articles : {{ total_cnt }}</h3>
+          {% for row in erows %}
+          <div class="panel-group" id="accordion">
+            <div class="panel-heading">
+              <a href="#collapse{{forloop.counter}}" data-toggle="collapse" data-parent="#accordion" class="w3-text-white">
+                <i class="fa fa-search"></i>
+                <h4>{{row.title}}&nbsp;<span style= "font-style:italic">&nbsp;{{row.date}}</span></h4>
+                <p>{{row.press}} &nbsp;{{row.category}}</p>
+              </a>
+            </div>
+            <div id="collapse{{forloop.counter}}" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>{{row.text}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
       </div>
+
+
 
     <div>
         <ul class="actions">
             <li><a href = "index.html" class="button">돌아가기</a></li>
         </ul>
-    </div>
     </div>
 
 
