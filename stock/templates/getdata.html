@@ -93,20 +93,44 @@
     }
 
     #radioButton{
-        border: 2px solid skyblue;
+        border: 0px solid skyblue;
     }
 
-    #radioButton:hover{
-        border: 2px solid red;
-    }
-
-
-
-
-</style>
-
+    html,body{
+  height:100%;
+}
+button{
 
 }
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
+
+
+
 
 	</style>
 
@@ -152,7 +176,17 @@
                 <li><a href="index.html#home-section" class="nav-link">Home</a></li>
                 <li><a href="index.html#features-section" class="nav-link">Model</a></li>
                 <li><a href="index.html#visualization-section" class="nav-link">Visualization</a></li>
-                  <li><a href="news.html" class="nav-link">News</a></li>
+                  <li class="has-children">
+                  <a href="news.html" class="nav-link">News</a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="news_hmm.html" class="nav-link">HMM</a></li>
+                    <li><a href="news_lg.html" class="nav-link">LG생활건강</a></li>
+                    <li><a href="news_nh.html" class="nav-link">NH투자증권</a></li>
+                    <li><a href="news_amore.html" class="nav-link">아모레퍼시픽</a></li>
+                    <li><a href="news_orion.html" class="nav-link">오리온</a></li>
+                    <li><a href="news_hanmi.html" class="nav-link">한미약품</a></li>
+                  </ul>
+                </li>
 
                 <li class="has-children">
                   <a href="index.html#about-section" class="nav-link">About Us</a>
@@ -160,12 +194,12 @@
 
                     <li><a href="team.html" class="nav-link">Our Team</a></li>
                     <li class="has-children">
-                      <a href="#">More Links</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                      </ul>
+<!--                      <a href="#">More Links</a>-->
+<!--                      <ul class="dropdown">-->
+<!--                        <li><a href="#">Menu One</a></li>-->
+<!--                        <li><a href="#">Menu Two</a></li>-->
+<!--                        <li><a href="#">Menu Three</a></li>-->
+<!--                      </ul>-->
                     </li>
                   </ul>
                 </li>
@@ -194,7 +228,10 @@
             <input type="radio" name="slide" id="slide04">
             <input type="radio" name="slide" id="slide05">
             <input type="radio" name="slide" id="slide06">
+
+
             <li class="slidewrap">
+
 
                 <ul class="slidelist">
                     <!-- 슬라이드 영역 -->
@@ -244,39 +281,16 @@
 
                               </ul>
 
-
-
                             </div>
                             <img src="{% static 'assets/images/img_2.jpg' %}">
                         </a>
                     </li>
+
+
                     <li class="slideitem">
                       <a>
                         <div class="textbox">
-                                <h3 style = "font-size:50px;">Q3) 원하시는 투자금액은 어떻게 되시나요?</h3>
-                              <ul>
-                                <li>
-
-                                    <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q3" id = "money1" value="20"> <p style="color:black; font-size:22px;"><strong>1000만원 이하</strong></p>
-                                    <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q3" id = "money2" value="15"> <p style="color:black; font-size:22px;"><strong>1000만원 ~ 3000만원</strong></p>
-                                    <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q3" id = "money3" value="10"> <p style="color:black; font-size:22px;"><strong>3000만원 ~ 5000만원</strong></p>
-                                    <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q3" id = "money4" value="5"> <p style="color:black; font-size:22px;"><strong>5000만원 ~ 1억원</strong></p>
-                                    <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q3" id = "money5" value="0"> <p style="color:black; font-size:22px;"><strong>1억원 이상</strong></p>
-
-                                </li>
-
-                              </ul>
-
-
-
-                            </div>
-                            <img src="{% static 'assets/images/img_3.jpg' %}">
-                        </a>
-                    </li>
-                    <li class="slideitem">
-                      <a>
-                        <div class="textbox">
-                                <h3 style = "font-size:40px;">Q4) 투자 금액이 총자산에서 차지하는 비중이 얼마입니까?</h3>
+                                <h3 style = "font-size:40px;">Q3) 투자 금액이 총자산에서 차지하는 비중이 얼마입니까?</h3>
                               <ul>
                                 <li>
 
@@ -299,7 +313,7 @@
                     <li class="slideitem">
                       <a>
                         <div class="textbox">
-                                <h3 style = "font-size:40px;">Q5) 투자를 할 때 다음 중 무엇을 더 중요하게 여기십니까?</h3>
+                                <h3 style = "font-size:40px;">Q4) 투자를 할 때 다음 중 무엇을 더 중요하게 여기십니까?</h3>
                               <ul>
                                 <li>
 
@@ -322,7 +336,7 @@
                     <li class="slideitem">
                       <a>
                         <div class="textbox">
-                                <h3 style = "font-size:35px;">Q6) 어느 정도의 손해가 발생할 때까지 그대로 보유하시겠습니까?</h3>
+                                <h3 style = "font-size:35px;">Q5) 어느 정도의 손해가 발생할 때까지 그대로 보유하시겠습니까?</h3>
                               <ul>
                                 <li>
 
@@ -331,7 +345,7 @@
                                     <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q6" id = "loss3" value="10"> <p style="color:black; font-size:22px;"><strong>20%</strong></p>
                                     <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q6" id = "loss4" value="5"> <p style="color:black; font-size:22px;"><strong>10%</strong></p>
                                     <input style = "width:20px; height:20px; border:1px;" type="radio" name="Q6" id = "loss5" value="0"> <p style="color:black; font-size:22px;"><strong>5%</strong></p>
-                                    <button style = "border-radius:70%;" type="button" name="button" id="radioButton"><img style = "border-radius:70%;" src="{% static 'assets/images/go.png' %}"></button>
+
 
                                 </li>
 
@@ -342,6 +356,27 @@
                             </div>
 
                             <img src="{% static 'assets/images/img_4.jpg' %}">
+                        </a>
+                    </li>
+                    <li class="slideitem">
+                      <a>
+                        <div class="textbox">
+                                <h1>결과확인!</h1>
+                              <ul>
+                                <li>
+
+
+                                    <button style = "border-radius:70%;" type="button" name="button" id="radioButton2" onclick="location.href='portpolio.html' "><img style = "width:100%; height:100%" src="{% static 'assets/images/go.png' %}"></button>
+
+                                </li>
+
+                              </ul>
+
+
+
+                            </div>
+
+
                         </a>
                     </li>
 
@@ -390,11 +425,7 @@
         <div class="row mb-5">
           <div class="col-12">
             <p class="mb-0">
-              <a href="#" class="p-3"><span class="icon-facebook"></span></a>
-              <a href="#" class="p-3"><span class="icon-twitter"></span></a>
-              <a href="#" class="p-3"><span class="icon-instagram"></span></a>
-              <a href="#" class="p-3"><span class="icon-linkedin"></span></a>
-              <a href="#" class="p-3"><span class="icon-pinterest"></span></a>
+              <a href="https://github.com/jaywoong/mainproject_stock" class="p-3"><span class="icon-github"></span></a>
             </p>
           </div>
         </div>
