@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+  <head>
+    <title>주식종가예측 &mdash; by CHICKEN STOCK</title>
+    <link rel="icon" href="{% static 'assets/images/stock1.png' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'assets/fonts/icomoon/style.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.fancybox.min.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/font/flaticon.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/box.css' %}"/>
+
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div class="site-wrap"  id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-md-3 col-xl-4  d-block">
+            <a href="index.html"><img src="{% static 'assets/images/stock.png' %}" alt="Image" class="img-fluid"></a>
+          </div>
+
+          <div class="col-12 col-md-9 col-xl-8 main-menu">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                <li><a href="index.html#home-section" class="nav-link">Home</a></li>
+                <li><a href="index.html#features-section" class="nav-link">Model</a></li>
+                <li><a href="index.html#visualization-section" class="nav-link">Visualization</a></li>
+                <li class="has-children">
+                  <a href="news.html" class="nav-link">News</a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="news_hmm.html" class="nav-link">HMM</a></li>
+                    <li><a href="news_lg.html" class="nav-link">LG생활건강</a></li>
+                    <li><a href="news_nh.html" class="nav-link">NH투자증권</a></li>
+                    <li><a href="news_amore.html" class="nav-link">아모레퍼시픽</a></li>
+                    <li><a href="news_orion.html" class="nav-link">오리온</a></li>
+                    <li><a href="news_hanmi.html" class="nav-link">한미약품</a></li>
+                  </ul>
+                </li>
+
+                <li class="has-children">
+                  <a href="index.html#about-section" class="nav-link">About Us</a>
+                  <ul class="dropdown arrow-top">
+
+                    <li><a href="team.html" class="nav-link">Our Team</a></li>
+                    <li class="has-children">
+<!--                      <a href="#">More Links</a>-->
+<!--                      <ul class="dropdown">-->
+<!--                        <li><a href="#">Menu One</a></li>-->
+<!--                        <li><a href="#">Menu Two</a></li>-->
+<!--                        <li><a href="#">Menu Three</a></li>-->
+<!--                      </ul>-->
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+
+          <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0" ><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+
+        </div>
+      </div>
+
+    </header>
+
+
+
+
+
+
+
+<!--      <div class="site-blocks-cover" style="overflow: hidden;">-->
+      <div class="container">
+          <br><br><br><br><br><br>
+
+          <div class="site-section" id="news-section">
+      <div class="container">
+
+        <div class="row mb-5 justify-content-center text-center"  data-aos="fade-up">
+          <div class="col-7 text-center  mb-5">
+            <h2 class="section-title">News</h2>
+            <p class="lead">오리온 뉴스 갯수 : {{ total_cnt }}</p>
+          </div>
+        </div>
+
+
+        <!----- News List ----->
+        <div>
+          {% for row in erows %}
+          <div class="panel-group" id="accordion">
+            <div class="panel-heading">
+              <a href="#collapse{{forloop.counter}}" data-toggle="collapse" data-parent="#accordion" class="w3-text-white">
+                <i class="fa fa-search"></i>
+
+                <td>
+                <h4 style="color:black;">{{row.title}}&nbsp;<span style= "font-style:italic">&nbsp;{{row.date}}</span></h4>
+                <p>{{row.press}} &nbsp;{{row.category}}</p>
+                </td>
+              </a>
+            </div>
+            <div id="collapse{{forloop.counter}}" class="panel-collapse collapse">
+              <div class="panel-body">
+                <p>{{row.text}}</p>
+              </div>
+            </div>
+          </div>
+          <p>------------------------------</p>
+          {% endfor %}
+      </div>
+
+
+
+    <div>
+        <ul class="actions">
+            <li><a href = "index.html" class="button">돌아가기</a></li>
+        </ul>
+    </div>
+
+
+
+
+    </div>
+
+
+
+
+      </div>
+    </div>
+
+
+    <div class="footer py-5 text-center">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+            <p class="mb-0">
+              <a href="https://github.com/jaywoong/mainproject_stock" class="p-3"><span class="icon-github"></span></a>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="mb-0">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .site-wrap -->
+
+  <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'assets/js/aos.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.box.js' %}"></script>
+
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+  </body>
+</html>

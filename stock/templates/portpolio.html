@@ -30,9 +30,128 @@
 
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
     <link rel="stylesheet" href="{% static 'assets/css/box.css' %}"/>
-    <script>
+      <script src="{% static 'assets/js/btnn.js' %}"></script>
+      <script src="{% static 'assets/js/parameter.js' %}"></script>
+<!--      <script src="{% static 'assets/js/gauge.js' %}"></script>-->
+      <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+      <script></script>
 
-    </script>
+
+
+
+      <script>
+      var search = location.search;
+
+      var params = new URLSearchParams(search);
+
+      var getType = params.get('res');
+
+      var results = parseInt(getType)
+
+
+      am4core.ready(function() {
+
+        // Themes begin
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        // create chart
+        var chart = am4core.create("chartdiv", am4charts.GaugeChart);
+        chart.hiddenState.properties.opacity = 0; // this makes initial fade in effect
+
+        chart.innerRadius = -25;
+
+        var axis = chart.xAxes.push(new am4charts.ValueAxis());
+        axis.min = 0;
+        axis.max = 100;
+        axis.strictMinMax = true;
+        axis.renderer.grid.template.stroke = new am4core.InterfaceColorSet().getFor("background");
+        axis.renderer.grid.template.strokeOpacity = 0.3;
+
+        var colorSet = new am4core.ColorSet();
+
+        var range0 = axis.axisRanges.create();
+        range0.value = 0;
+        range0.endValue = 50;
+        range0.axisFill.fillOpacity = 1;
+        range0.axisFill.fill = colorSet.getIndex(4);
+        range0.axisFill.zIndex = - 1;
+
+        var range1 = axis.axisRanges.create();
+        range1.value = 50;
+        range1.endValue = 80;
+        range1.axisFill.fillOpacity = 1;
+        range1.axisFill.fill = colorSet.getIndex(2);
+        range1.axisFill.zIndex = -1;
+
+        var range2 = axis.axisRanges.create();
+        range2.value = 80;
+        range2.endValue = 100;
+        range2.axisFill.fillOpacity = 1;
+        range2.axisFill.fill = colorSet.getIndex(0);
+        range2.axisFill.zIndex = -1;
+
+        var hand = chart.hands.push(new am4charts.ClockHand());
+
+        hand.showValue(results);
+
+});
+      </script>
+
+
+
+      <style>
+
+button,
+button::after {
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+button {
+  background: skyblue;
+  border: 3px solid #fff;
+  border-radius: 40px;
+  color: #fff;
+  display: block;
+  font-size: 1.6em;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 2em 6em;
+  position: relative;
+  text-transform: uppercase;
+
+}
+
+button::before,
+button::after {
+  background: #fff;
+  content: '';
+  position: absolute;
+  z-index: -1;
+}
+
+button:hover {
+  color: black;
+  background: #2ecc71;
+}
+
+.btn-1::after {
+  height: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+.btn-1:hover:after {
+  height: 100%;
+}
+      </style>
+
 
 
 
@@ -76,17 +195,7 @@
                 <li><a href="index.html#home-section" class="nav-link">Home</a></li>
                 <li><a href="index.html#features-section" class="nav-link">Model</a></li>
                 <li><a href="index.html#visualization-section" class="nav-link">Visualization</a></li>
-                <li class="has-children">
-                  <a href="news.html" class="nav-link">News</a>
-                  <ul class="dropdown arrow-top">
-                    <li><a href="news_hmm.html" class="nav-link">HMM</a></li>
-                    <li><a href="news_lg.html" class="nav-link">LG생활건강</a></li>
-                    <li><a href="news_nh.html" class="nav-link">NH투자증권</a></li>
-                    <li><a href="news_amore.html" class="nav-link">아모레퍼시픽</a></li>
-                    <li><a href="news_orion.html" class="nav-link">오리온</a></li>
-                    <li><a href="news_hanmi.html" class="nav-link">한미약품</a></li>
-                  </ul>
-                </li>
+                <li><a href="news.html" class="nav-link">News</a></li>
 
                 <li class="has-children">
                   <a href="index.html#about-section" class="nav-link">About Us</a>
@@ -129,9 +238,21 @@
         <div class="row mb-5 justify-content-center text-center"  data-aos="fade-up">
           <div class="col-7 text-center  mb-5">
             <h2 class="section-title">Portpolio</h2>
-            <p class="lead">기업 이름을 클릭 시, 해당하는 최신 News로 이동합니다.<a id="Q1"></a></p>
+            <a class="lead">기업 이름을 클릭 시, 해당하는 최신 News로 이동합니다.</a>
+<!--              <div id = "gauge"></div>-->
+
+
           </div>
         </div>
+
+        <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+
+
+
+
+
+
+
 
         <!-- Donut Chart -->
                        <div class="col-xl-4 col-lg-5" style="float:left;">
@@ -210,6 +331,9 @@
 
 
         </table>
+          <br><br><br>
+
+          <button class="btn-1" onClick="location.href='mgetdata.html'">이전으로 돌아가기</button>
 
 
 
@@ -222,7 +346,7 @@
       </div>
     </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br>
     <div class="footer py-5 text-center">
       <div class="container">
         <div class="row mb-5">
@@ -259,10 +383,10 @@
   <script src="{% static 'assets/js/jquery.box.js' %}"></script>
 
   <script src="{% static 'assets/js/main.js' %}"></script>
-  <script src="{% static 'assets/js/btn.js' %}"></script>
   <script src="{% static 'assets/js/chart.js' %}"></script>
   <script src="{% static 'assets/js/chart-pie.js' %}"></script>
   <script src="{% static 'assets/js/chart-data.js' %}"></script>
+<!--  <script src="{% static 'assets/js/gauge.js' %}"></script>-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
   </body>
