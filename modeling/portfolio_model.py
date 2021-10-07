@@ -8,12 +8,7 @@ class OptimizePortfolio:
         global merged_data
 
         for stock_name in stock_name_list:
-            conn = sqlite3.connect('./stock.db')
-            c = conn.cursor()
-            stock_df = pd.read_sql('SELECT * FROM ' + stock_name, con=conn)
-            c.close()
-
-            merged_data[stock_name] = stock_df.iloc[-11:,-1]
+            merged_data[stock_name] = stock_name.iloc[-11:,-1]
         return
 
     def pf1(self, merged_data):
@@ -134,6 +129,8 @@ class OptimizePortfolio:
 
 
     def custom(self, total_asset, risk_score):
+        global custom_pf
+
         if risk_score <= 20:
             pf_num = pf1
         elif risk_score <= 40:
@@ -162,14 +159,15 @@ class OptimizePortfolio:
 
             custom_pf = custom_pf.append({'stock_name' : stock_name , 'num_of_shares' : num_of_shares, 'amount' : amount, 'ratio' : pf_num.iloc[i,1]} , ignore_index=True)
 
-        return print(custom_pf)
+        return
 
 
-op = OptimizePortfolio()
-op.merge_predicteions()
-op.pf1(merged_data)
-op.pf2(merged_data)
-op.pf3(merged_data)
-op.pf4(merged_data)
-op.pf5(merged_data)
-op.custom(10000000,55)
+# op = OptimizePortfolio()
+# op.merge_predicteions()
+# op.pf1(merged_data)
+# op.pf2(merged_data)
+# op.pf3(merged_data)
+# op.pf4(merged_data)
+# op.pf5(merged_data)
+# op.custom(10000000,55)
+# opti.custom(total_asset, risk_score)
