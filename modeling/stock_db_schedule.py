@@ -1,9 +1,7 @@
-
 # 기존 컬럼명
 #'DATE', '거래량', 'atr', 'PER','PBR','기관합계', '기타법인','개인','외국인합계', 'NASDAQ','S&P','CBOE', 'Exchange rate','futures2y','futures10y, 'y'
 # 바뀐 컬럼명
 # date, volume, atr, per, pbr, institution, corp, retail, foreign, nasdaq, sp, cboe, exchangerate, futures2y, futures10y, y
-
 
 import sqlite3
 import pandas as pd
@@ -117,13 +115,12 @@ if __name__ == "__main__":
                  '004170', '007070', '035420', '035720', '035760', '253450', '207940', '068270',
                  '128940', '036570', '251270', '009830', '006260', '005490', '010130', '010950',
                  '096770', '011200']
-
         for code in codes:
             updatedb.getKRX(code)  # y, volume, per, pbr, institution, corp, retail, foreign
             updatedb.saving()  # db에 최종 저장
 
     # schedule.every(1).minutes.do(update)  # 1분마다 동작
-    schedule.every().day.at("5:30").do(update)  # 매일 5:30에 동작
+    schedule.every().day.at("05:30").do(update)  # 매일 5:30에 동작
     while True:
         schedule.run_pending()
         time.sleep(1)

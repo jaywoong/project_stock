@@ -19,7 +19,7 @@ def stock():
 
 
 # 스크래핑 및 전처리 실행
-schedule.every().day.at("21:25").do(stock)
+schedule.every().day.at("05:32").do(stock)
 # schedule.every(1).minutes.do(stock)
 while True:
     schedule.run_pending()
