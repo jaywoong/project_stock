@@ -27,15 +27,10 @@ class UpdateDB:
         self.contents = []
 
     def getINVEST(self):  # Investing.com 데이터
-        try:
-            self.sp500 = fdr.DataReader('US500', self.yday, self.tday,)[['Close']]
-            self.cboe = fdr.DataReader('VIX', self.yday, self.tday,)[['Close']]
-            self.rate = fdr.DataReader('USD/KRW', self.yday, self.tday,)[['Close']]
-        except:
-            self.sp500 = pd.DataFrame(columns=['close'])
-            self.cboe = pd.DataFrame(columns=['close'])
-            self.rate = pd.DataFrame(columns=['close'])
-            # 거시경제지표 중 S&P500은 데이터 업데이트가 늦음
+        self.sp500 = fdr.DataReader('US500', self.yday, self.yday)[['Close']]
+        self.cboe = fdr.DataReader('VIX', self.yday, self.yday)[['Close']]
+        self.rate = fdr.DataReader('USD/KRW', self.yday, self.yday)[['Close']]
+        # 거시경제지표 중 S&P500은 데이터 업데이트가 늦음
         df_index = pd.concat([self.sp500, self.cboe, self.rate], axis=1).reset_index()
         df_index.columns = ['date', 'sp', 'cboe', 'exchangerate']
         self.df_index = df_index.set_index('date')
@@ -44,22 +39,25 @@ class UpdateDB:
 
     def crawlINVEST(self):  # Investing.com 크롤링
         self.getINVEST()
-        self.urls = ['https://kr.investing.com/indices/nasdaq-composite-historical-data','https://kr.investing.com/rates-bonds/us-2-yr-t-note-historical-data', 'https://kr.investing.com/rates-bonds/us-10-yr-t-note-historical-data']
+        self.urls = ['https://kr.investing.com/indices/nasdaq-composite-historical-data',
+                     'https://kr.investing.com/rates-bonds/us-2-yr-t-note-historical-data',
+                     'https://kr.investing.com/rates-bonds/us-10-yr-t-note-historical-data']
         for url in self.urls:
             self.driver = webdriver.Chrome('C:\chromedriver.exe', options=self.options)
             self.driver.get(url)
             self.soup = BeautifulSoup(self.driver.page_source, 'html.parser')
             try:
                 self.index = self.soup.select('#last_last')
-                self.contents.append(self.index[0].text.strip())
             except:
                 self.driver.execute_script("window.scrollTo(0, 700)")
                 self.index = self.soup.select('#curr_table > tbody > tr:nth-child(1) > td:nth-child(2)')
+            self.contents.append(self.index[0].text.strip())
             del self.soup
             self.driver.quit()
-        self.dateindex = pd.DatetimeIndex([datetime.today().date()])
-        df_crawl = pd.DataFrame([self.contents], self.dateindex, ['nasdaq','futures2y', 'futures10y']).reset_index().rename(columns={'index': 'date'})
-        self.df_crawl = pd.DataFrame([self.contents],['nasdaq', 'futures2y', 'futures10y'])
+        self.dateindex = pd.DatetimeIndex([(date.today() - timedelta(1))])  # datetime.today().date()
+        df_crawl = pd.DataFrame([self.contents], index=self.dateindex,
+                                columns=['nasdaq', 'futures2y', 'futures10y']).reset_index().rename(
+            columns={'index': 'date'})
         self.df_crawl = df_crawl.set_index('date')
         print('crawlINVEST complete.')
         return self.df_crawl
@@ -67,6 +65,7 @@ class UpdateDB:
     def mergeINVEST(self):
         self.crawlINVEST()
         self.df_invest = pd.merge(self.df_index, self.df_crawl, on='date')
+        print(self.df_invest)
         return self.df_invest
 
     def getKRX(self, code):  # KRX 데이터
