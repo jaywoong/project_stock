@@ -1,6 +1,6 @@
 
 # 엑셀데이터 컬럼 통일하기
-# date, volume, per, pbr, institution, corp, retail, foreign, nasdaq, sp, cboe,
+# date, volume, atr, per, pbr, institution, corp, retail, foreign, nasdaq, sp, cboe,
 # exchangerate, futures2y, futures10y, y
 
 import pandas as pd
