@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet"/>
+   <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet"/>
     <link rel="stylesheet" href="{% static 'assets/fonts/icomoon/style.css' %}"/>
 
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"/>
@@ -68,7 +68,7 @@
 	/* 좌,우 슬라이드 버튼 */
 	.slide-control > div {display:none;}
 	.section .left {left:30px;background:url('./images/left.png') center center / 100% no-repeat;}
-	.section .right {right:30px;background:url({% static 'assets/images/landing_1.png' %}) center center / 100% no-repeat; border-radius:70%;}
+	.section .right {right:30px;background:url({% static 'assets/images/landing_1.png' %}) center center / 100% no-repeat; border-radius:70%;width:10%; height:10%;}
 	.section input[id="slide01"]:checked ~ .slidewrap .slide-control > div:nth-child(1) {display:block;}
 	.section input[id="slide02"]:checked ~ .slidewrap .slide-control > div:nth-child(2) {display:block;}
 	.section input[id="slide03"]:checked ~ .slidewrap .slide-control > div:nth-child(3) {display:block;}
@@ -99,14 +99,14 @@
     html,body{
   height:100%;
 }
-button{
+button1{
 
 }
-button:hover{
+button1:hover{
   background:#fff;
   color:#1AAB8A;
 }
-button:before,button:after{
+button1:before,button:after{
   content:'';
   position:absolute;
   top:0;
@@ -116,13 +116,13 @@ button:before,button:after{
   background: #1AAB8A;
   transition:400ms ease all;
 }
-button:after{
+button1:after{
   right:inherit;
   top:inherit;
   left:0;
   bottom:0;
 }
-button:hover:before,button:hover:after{
+button1:hover:before,button:hover:after{
   width:100%;
   transition:800ms ease all;
 }
@@ -133,6 +133,12 @@ button:hover:before,button:hover:after{
 
 
 	</style>
+
+      <script>
+          function setChildValue(index) {
+          window.location.href = "subPage.html?index=" + index; }
+
+      </script>
 
   </head>
 
@@ -176,17 +182,7 @@ button:hover:before,button:hover:after{
                 <li><a href="index.html#home-section" class="nav-link">Home</a></li>
                 <li><a href="index.html#features-section" class="nav-link">Model</a></li>
                 <li><a href="index.html#visualization-section" class="nav-link">Visualization</a></li>
-                  <li class="has-children">
-                  <a href="news.html" class="nav-link">News</a>
-                  <ul class="dropdown arrow-top">
-                    <li><a href="news_hmm.html" class="nav-link">HMM</a></li>
-                    <li><a href="news_lg.html" class="nav-link">LG생활건강</a></li>
-                    <li><a href="news_nh.html" class="nav-link">NH투자증권</a></li>
-                    <li><a href="news_amore.html" class="nav-link">아모레퍼시픽</a></li>
-                    <li><a href="news_orion.html" class="nav-link">오리온</a></li>
-                    <li><a href="news_hanmi.html" class="nav-link">한미약품</a></li>
-                  </ul>
-                </li>
+                  <li><a href="news.html" class="nav-link">News</a></li>
 
                 <li class="has-children">
                   <a href="index.html#about-section" class="nav-link">About Us</a>
@@ -364,9 +360,10 @@ button:hover:before,button:hover:after{
                                 <h1>결과확인!</h1>
                               <ul>
                                 <li>
+                                    <a id="Q3"></a>
 
 
-                                    <button style = "border-radius:70%;" type="button" name="button" id="radioButton2" onclick="location.href='portpolio.html' "><img style = "width:100%; height:100%" src="{% static 'assets/images/go.png' %}"></button>
+                                    <button style = "border-radius:70%;" type="button" name="button" id="radioButton" ><img style = "width:100%; height:100%" src="{% static 'assets/images/go.png' %}"></button>
 
                                 </li>
 
@@ -456,6 +453,7 @@ button:hover:before,button:hover:after{
   <script src="{% static 'assets/js/jquery.box.js' %}"></script>
   <script src="{% static 'assets/js/main.js' %}"></script>
   <script src="{% static 'assets/js/btn.js' %}"></script>
+  <script src="{% static 'assets/js/btnn.js' %}"></script>
 
   </body>
 </html>

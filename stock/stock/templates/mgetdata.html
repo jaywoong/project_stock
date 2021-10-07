@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+  <head>
+    <title>주식종가예측 &mdash; by CHICKEN STOCK</title>
+    <link rel="icon" href="{% static 'assets/images/stock1.png' %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'assets/fonts/icomoon/style.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/jquery-ui.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/owl.theme.default.min.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.fancybox.min.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap-datepicker.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/fonts/flaticon/font/flaticon.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/aos.css' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/box.css' %}"/>
+
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <style>
+      #searching input {
+          width: 400px;
+          height: 50px;
+          padding: 20px;
+          box-sizing: border-box;
+          border-radius: 25px;
+          border: 0;
+          background: #eee;
+          font-size: 17px;
+          transition: all 0.5s;
+      }
+
+      #searching input:hover {
+          background: #ccc;
+      }
+
+      #searching input:focus {
+          outline: none;
+      }
+    </style>
+
+
+
+  </head>
+
+  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+
+
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <div class="site-wrap"  id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+    <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-md-3 col-xl-4  d-block">
+            <a href="index.html"><img src="{% static 'assets/images/stock.png' %}" alt="Image" class="img-fluid"></a>
+          </div>
+
+          <div class="col-12 col-md-9 col-xl-8 main-menu">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block ml-0 pl-0">
+                <li><a href="index.html#home-section" class="nav-link">Home</a></li>
+                <li><a href="index.html#features-section" class="nav-link">Model</a></li>
+                <li><a href="index.html#visualization-section" class="nav-link">Visualization</a></li>
+                  <li class="has-children">
+                  <a href="news.html" class="nav-link">News</a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="news_hmm.html" class="nav-link">HMM</a></li>
+                    <li><a href="news_lg.html" class="nav-link">LG생활건강</a></li>
+                    <li><a href="news_nh.html" class="nav-link">NH투자증권</a></li>
+                    <li><a href="news_amore.html" class="nav-link">아모레퍼시픽</a></li>
+                    <li><a href="news_orion.html" class="nav-link">오리온</a></li>
+                    <li><a href="news_hanmi.html" class="nav-link">한미약품</a></li>
+                  </ul>
+                </li>
+
+                <li class="has-children">
+                  <a href="index.html#about-section" class="nav-link">About Us</a>
+                  <ul class="dropdown arrow-top">
+
+                    <li><a href="team.html" class="nav-link">Our Team</a></li>
+                    <li class="has-children">
+<!--                      <a href="#">More Links</a>-->
+<!--                      <ul class="dropdown">-->
+<!--                        <li><a href="#">Menu One</a></li>-->
+<!--                        <li><a href="#">Menu Two</a></li>-->
+<!--                        <li><a href="#">Menu Three</a></li>-->
+<!--                      </ul>-->
+                    </li>
+                  </ul>
+                </li>
+
+                <li><a href="#contact-section" class="nav-link">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+
+
+          <div class="col-6 col-md-9 d-inline-block d-lg-none ml-md-0" ><a href="#" class="site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a></div>
+
+        </div>
+      </div>
+
+    </header>
+
+    <div class="site-blocks-cover" style="overflow: hidden;">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+
+          <div class="col-md-12" style="position: relative;" data-aos="fade-up" data-aos-delay="200">
+
+            <img src="{% static 'assets/images/undraw_investing_7u74.svg' %}" alt="Image" class="img-fluid img-absolute">
+
+
+            <div class="row mb-4" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-lg-6 mr-auto">
+                <h1>운용 가능한 자금을 입력하세요!</h1>
+                <p class="mb-5">추천을 시작하기에 앞서, 최소 500만원의 운용 가능한 자금을 입력해주세요.</p>
+
+                <div id="search">
+
+                    <form name="Q33" id="searching1" method="post" action="getdata.html">
+                      {% csrf_token %}
+
+                        <input name = "Q3" class="gSearch" type="number" size="6" placeholder="단위는 만 원입니다." onfocus="this.placeholder=''" onblur="this.placeholder='ex) 2000 입력 시 2000만원입니다.'" name="search"
+                               style ="width: 400px; height: 50px;
+                                      padding: 20px;
+                                      box-sizing: border-box;
+                                      border-radius: 25px;
+                                      border: 0;
+                                      background: #eee;
+                                      font-size: 17px;
+                                      transition: all 0.5s;">
+
+                        <input type="submit" style="border-radius:10%; width:50px; height:40px;">
+                    </form>
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+<br>
+
+
+
+
+      </div>
+    </div>
+
+
+    <div class="footer py-5 text-center">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-12">
+            <p class="mb-0">
+              <a href="https://github.com/jaywoong/mainproject_stock" class="p-3"><span class="icon-github"></span></a>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p class="mb-0">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .site-wrap -->
+
+  <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'assets/js/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'assets/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'assets/js/aos.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.fancybox.min.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+  <script src="{% static 'assets/js/jquery.box.js' %}"></script>
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <script src="{% static 'assets/js/btn.js' %}"></script>
+
+  </body>
+</html>

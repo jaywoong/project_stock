@@ -7,18 +7,17 @@ $(document).ready(function () {
         var R5 = $('input[name="Q5"]:checked').val();
         var R6 = $('input[name="Q6"]:checked').val();
 
-        var Q1 = parseInt(R1);
-        var Q2 = parseInt(R2);
-        var Q3 = parseInt(R3*10000);
-        var Q4 = parseInt(R4);
-        var Q5 = parseInt(R5);
-        var Q6 = parseInt(R6);
+        var T1 = parseInt(R1);
+        var T2 = parseInt(R2);
+        var T3 = parseInt(R3*10000);
+        var T4 = parseInt(R4);
+        var T5 = parseInt(R5);
+        var T6 = parseInt(R6);
 
-        var result = Q1 + Q2 + Q4 + Q5 + Q6;
+        var result = T1 + T2 + T4 + T5 + T6;
 //        var moneyInput = prompt("ddd"+"");
+        alert(result00 + '점 입니다');
 
-
-        prompt("당신의 점수는 " + result + '점 입니다 !' + Q3);
     });
 });
 
