@@ -17,9 +17,11 @@ import time
 
 class UpdateDB:
     def __init__(self):
-        self.tday = date.today().strftime('%Y%m%d')  # 오늘
-        self.yday = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 어제
-        self.bfyday = (date.today() - timedelta(2)).strftime('%Y%m%d')  # 그저께
+        self.conn = sqlite3.connect('samsung.db')  # stock.db
+        self.c = self.conn.cursor()
+        self.yday = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 1일 전
+        self.bfyday = (date.today() - timedelta(2)).strftime('%Y%m%d')  # 2일 전
+        self.bffyday = (date.today() - timedelta(3)).strftime('%Y%m%d')  # 3일 전
         self.options = Options()
         self.options.add_argument('headless')
         self.contents = []
@@ -70,38 +72,41 @@ class UpdateDB:
     def getKRX(self, code):  # KRX 데이터
         self.stockname = stock.get_market_ticker_name(code)
         def getATR():
-            df_atr = stock.get_market_ohlcv_by_date(self.bfyday, self.tday, code).drop(['시가', '거래량'], axis=1)
-            a = df_atr['고가'][0] - df_atr['저가'][0]  # 고가-저가
-            b = df_atr['고가'][0] - df_atr['종가'][1]  # 고가-전날종가
-            c = df_atr['저가'][0] - df_atr['종가'][1]  # 저가-전날종가
-            lst = [abs(a), abs(b), abs(c)]
-            return max(lst)
-        self.ohlcv = stock.get_market_ohlcv_by_date(self.yday, self.tday, code)[['종가', '거래량']]
-        self.ohlcv['ATR'] = getATR()
-        self.per = stock.get_market_fundamental_by_date(self.tday, self.tday, code)[['PER', 'PBR']]
-        try:
-            self.value = stock.get_market_trading_value_by_date(self.tday, self.tday, code).drop(['전체'], axis=1)
-        except:
-            print('개별주관련지표 중 기관합계,기타법인,개인,외국인합계는 당일 16:30쯤 업데이트 됩니다.')
-            self.value = pd.DataFrame(columns=['institution', 'corp', 'retail', 'foreign'])
-        df_krx = pd.concat([self.ohlcv, self.per, self.value], axis=1).reset_index()
-        df_krx.columns = ['date', 'y', 'volume', 'atr', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
-        self.df_krx = df_krx.set_index('date')
+            df_a = stock.get_market_ohlcv_by_date(self.bffyday, self.yday, code)
+            df_atr = df_a.rename(index={'날짜': 'Date'}).drop(columns="시가", axis=1)
+            df_atr.columns = ['high', 'low', 'close', 'volume']
+            df_atr["atr"] = ""
+            lst = []
+            atr = []
+            for i in range(len(df_atr) - 1):
+                a = df_atr.iloc[i, 0] - df_atr.iloc[i, 1]  # 고가-저가
+                b = df_atr.iloc[i, 0] - df_atr.iloc[i + 1, 2]  # 고가-전날종가
+                c = df_atr.iloc[i, 1] - df_atr.iloc[i + 1, 2]  # 저가-전날종가
+                lst = [abs(a), abs(b), abs(c)]
+                atr.append(max(lst))
+            df_atr.iloc[1, 4] = atr
+            df_atr = df_atr[1:]
+            return df_atr[['close', 'volume', 'atr']]
+        self.ohlcv = getATR()
+        self.funda = stock.get_market_fundamental_by_date(self.yday, self.yday, code)[['PER', 'PBR']]
+        self.value = stock.get_market_trading_value_by_date(self.yday, self.yday, code).drop(['전체'], axis=1)
+
+        df = pd.concat([self.ohlcv, self.funda, self.value], axis=1)
+        self.df_krx = df.reset_index()
+        self.df_krx.columns = ['date', 'y', 'volume', 'atr', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
+        self.df_krx = self.df_krx.set_index('date')
         print('{} getKRX complete.'.format(self.stockname))
         return self.df_krx
 
     def saving(self):  # 데이터 합쳐서 db에 저장
         self.df_merge = pd.merge(self.df_krx, self.df_invest, on='date')
-        self.df_merge.to_sql('{}'.format(self.stockname), conn, if_exists='append') # 테이블명
-        conn.commit()
+        self.df_merge.to_sql('{}'.format(self.stockname), self.conn, if_exists='append') # 테이블명
+        self.conn.commit()
         print('{} inserted to DB.'.format(self.stockname))
 
 
 
 if __name__ == "__main__":
-    conn = sqlite3.connect('stock.db')
-    c = conn.cursor()
-
     def update():
         updatedb = UpdateDB()  # 클래스 선언
         updatedb.mergeINVEST()   # sp, cboe, exchangerate, nasdaq, futures2y, futures10y
@@ -117,7 +122,6 @@ if __name__ == "__main__":
         for code in codes:
             updatedb.getKRX(code)  # y, volume, per, pbr, institution, corp, retail, foreign
             updatedb.saving()  # db에 최종 저장
-        conn.close()
 
     # schedule.every(1).minutes.do(update)  # 1분마다 동작
     schedule.every().day.at("5:30").do(update)  # 매일 5:30에 동작
