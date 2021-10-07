@@ -105,7 +105,6 @@ class UpdateDB:
         print('{} inserted to DB.'.format(self.stockname))
 
 
-
 if __name__ == "__main__":
     def update():
         updatedb = UpdateDB()  # 클래스 선언
