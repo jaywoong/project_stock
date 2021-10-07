@@ -144,10 +144,9 @@
 
                 <div id="search">
 
-                    <form name="Q33" id="searching1" method="post" action="getdata.html">
                       {% csrf_token %}
 
-                        <input name = "Q3" class="gSearch" type="number" size="6" placeholder="단위는 만 원입니다." onfocus="this.placeholder=''" onblur="this.placeholder='ex) 2000 입력 시 2000만원입니다.'" name="search"
+                        <input name = "Q36" class="gSearch" type="number" size="6" placeholder="단위는 만 원입니다." onfocus="this.placeholder=''" onblur="this.placeholder='ex) 2000 입력 시 2000만원입니다.'" name="search"
                                style ="width: 400px; height: 50px;
                                       padding: 20px;
                                       box-sizing: border-box;
@@ -157,8 +156,8 @@
                                       font-size: 17px;
                                       transition: all 0.5s;">
 
-                        <input type="submit" style="border-radius:10%; width:50px; height:40px;">
-                    </form>
+                  <button style = "border-radius:70%;" type="button" name="button" id="Q333" ><img style = "width:100%; height:100%; border-radius:70%" src="{% static 'assets/images/go.png' %}"></button>
+
                 </div>
 
               </div>
@@ -216,6 +215,7 @@
   <script src="{% static 'assets/js/jquery.box.js' %}"></script>
   <script src="{% static 'assets/js/main.js' %}"></script>
   <script src="{% static 'assets/js/btn.js' %}"></script>
+  <script src="{% static 'assets/js/total.js' %}"></script>
 
   </body>
 </html>

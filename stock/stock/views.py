@@ -1369,3 +1369,5 @@ def news_shillahotel(request):
 
     return render(request, 'shillahotel.html', result)
 
+
+
