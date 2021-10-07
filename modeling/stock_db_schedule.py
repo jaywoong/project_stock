@@ -16,7 +16,7 @@ import time
 
 class UpdateDB:
     def __init__(self):
-        self.conn = sqlite3.connect('samsung.db')  # stock.db
+        self.conn = sqlite3.connect('../modeling/stock.db')
         self.c = self.conn.cursor()
         self.yday = (date.today() - timedelta(1)).strftime('%Y%m%d')  # 1일 전
         self.bfyday = (date.today() - timedelta(2)).strftime('%Y%m%d')  # 2일 전
@@ -69,8 +69,9 @@ class UpdateDB:
 
     def getKRX(self, code):  # KRX 데이터
         self.stockname = stock.get_market_ticker_name(code)
+        if self.stockname == 'CJ ENM': self.stockname = 'CJENM'
         def getATR():
-            df_a = stock.get_market_ohlcv_by_date(self.bffyday, self.yday, code)
+            df_a = stock.get_market_ohlcv_by_date(self.bfyday, self.yday, code)
             df_atr = df_a.rename(index={'날짜': 'Date'}).drop(columns="시가", axis=1)
             df_atr.columns = ['high', 'low', 'close', 'volume']
             df_atr["atr"] = ""
@@ -82,7 +83,7 @@ class UpdateDB:
                 c = df_atr.iloc[i, 1] - df_atr.iloc[i + 1, 2]  # 저가-전날종가
                 lst = [abs(a), abs(b), abs(c)]
                 atr.append(max(lst))
-            df_atr.iloc[1, 4] = atr
+            df_atr.iloc[1,4] = atr
             df_atr = df_atr[1:]
             return df_atr[['close', 'volume', 'atr']]
         self.ohlcv = getATR()
@@ -98,6 +99,7 @@ class UpdateDB:
 
     def saving(self):  # 데이터 합쳐서 db에 저장
         self.df_merge = pd.merge(self.df_krx, self.df_invest, on='date')
+
         self.df_merge.to_sql('{}'.format(self.stockname), self.conn, if_exists='append') # 테이블명
         self.conn.commit()
         print('{} inserted to DB.'.format(self.stockname))
