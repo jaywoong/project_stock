@@ -12,15 +12,15 @@
 
 [YouTube시연](https://youtu.be/m00NjTMoaJs)   
 
-[결과 보고서]()  
+[결과 보고서](md-images/chickenstock.pdf)  
 
 ___
 
 
 
-#### **Table of Contents**
+####  **Table of Contents**
 
-**:mag:[Overview](#idx1)** **:shamrock:[Process](idx2)** **:book: [Skills](#idx2)** **:dancers: [Team](#idx3)** **:clock2: [Scheduling](#idx4)**
+**:mag:[Overview](#idx1)** **:shamrock:[Process](#idx2)** **:book: [Skills](#idx2)** **:dancers: [Team](#idx3)** **:clock2: [Scheduling](#idx4)**
 
 <br>
 
