@@ -63,6 +63,6 @@
 
   ![LSTM](md-images/LSTM.png)
 
-* #### MVP
+* #### SLSQP
 
 ![MVP](md-images/MVP.png)

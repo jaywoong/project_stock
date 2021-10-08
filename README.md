@@ -97,6 +97,7 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 ![WBS](md-images/WBS.PNG)
 
+<<<<<<< HEAD
 
 
 
@@ -154,4 +155,21 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
 ![portfolio visualization](md-images/portfolio%20visualization.png)
+=======
+* #### LSTM
+
+![vis_1](md-images/vis_1-1633675650103.png)
+
+* #### SLSQP
+
+![vis_3](md-images/vis_3-1633675688815.png)
+
+* #### WEB(parameter 전송)
+
+  
+
+![vis_4](md-images/vis_4.png)
+
+html에서 다음 html로 넘어갈 때 파라미터를 전송하는 코드
+>>>>>>> e44b87b7ca785f289d6fb25d15a9e64d15951fde
 
