@@ -16,10 +16,10 @@
 //}
 
 //배열이 아닌 var로 구성해야 id값 부여해서 html에서 사용 가능
-var stock_name = ['samsung', 'lg', 'sk', 'naver', 'kakao'];
-var num_of_shares = [10, 2, 23, 7, 8];
-var amount = [3000, 22222, 444444, 789000, 232323];
-var ratio = [0.3, 0.1, 0.2, 0.1, 0.3];
+var stock_name = ['고려아연', '삼성전기', 'SK이노베이션', 'S-Oil', '한화솔루션'];
+var num_of_shares = [31, 70, 39, 69, 118];
+var amount = [15872000, 11550000, 9828000, 7452000, 4985500];
+var ratio = [0.32, 0.23, 0.2, 0.15, 0.1];
 
 var names1 = stock_name[0];
 document.getElementById("names1").innerHTML=names1;

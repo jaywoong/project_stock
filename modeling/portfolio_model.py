@@ -4,7 +4,7 @@ import numpy as np
 import scipy.optimize as sco
 
 class OptimizePortfolio:
-    def merge_predicteions(self, stock_name_list):
+    def merge_predictions(self, stock_name_list):
         global merged_data
 
         for stock_name in stock_name_list:

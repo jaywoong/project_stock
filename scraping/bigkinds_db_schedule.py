@@ -2,6 +2,7 @@ import sqlite3
 import schedule
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+#import chromedriver_autoinstaller
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
@@ -70,7 +71,6 @@ class Bigkinds:
                 except:
                     press = None
                     pass
-
                 if press != None:
                     self.contents.append([title, press, category, date])
                 time.sleep(3)
@@ -82,7 +82,6 @@ class Bigkinds:
                 self.texts.append(text.replace('\n', ''))
                 self.driver.find_element_by_xpath("//div[@id='news-detail-modal']/div/div/button").click()
                 time.sleep(4)
-
             # 페이지 수 증가
             curPage += 1
             if curPage > self.totalPage:
@@ -113,7 +112,6 @@ class Bigkinds:
 if __name__ == "__main__":
     conn = sqlite3.connect('bigkinds.db')
     c = conn.cursor()
-
     def crawl():
         url = 'https://www.bigkinds.or.kr/v2/news/index.do'
         stocknames = ['삼성전자', 'SK하이닉스', 'LG화학', 'LG전자', 'LG이노텍', '삼성에스디에스', '삼성전기', '삼성생명', '삼성화재',
@@ -128,7 +126,7 @@ if __name__ == "__main__":
             crawl.saving(stockname)
         conn.close()
 
-    schedule.every().day.at("5:30").do(crawl)  # 매일 5:30에 동작
+    # schedule.every().day.at("05:30").do(crawl)  # 매일 5:30에 동작
     # schedule.every().monday.at("5:30").do(crawl)  # 매주 월요일 5:30에 동작
     while True:
         schedule.run_pending()

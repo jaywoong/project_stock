@@ -3,6 +3,7 @@ import time
 import schedule
 import sqlite3
 import pandas as pd
+import numpy as np
 import tensorflow as tf
 from fbprophet import Prophet
 from sklearn.preprocessing import MinMaxScaler
@@ -12,7 +13,6 @@ from tensorflow.keras.layers import Dense, LSTM, Conv1D, Lambda
 from tensorflow.keras.losses import Huber
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-
 
 os.environ['TF_CPP_MIN_LEVEL'] = '2'
 
@@ -38,6 +38,8 @@ class Prediction:
         predic = Prediction()
         global merged_data
 
+        merged_data = pd.DataFrame()
+
         for stock_name in stock_name_list:
 
             data = predic.load_data(stock_name)
@@ -45,6 +47,8 @@ class Prediction:
             data['nasdaq'] = data['nasdaq'].str.replace(',', '').astype(float)
             data['sp'] = data['sp'].str.replace(',', '').astype(float)
             data['exchangerate'] = data['exchangerate'].str.replace(',', '').astype(float)
+            data.replace('-', np.nan, inplace=True)
+            data.fillna(method='ffill', inplace=True)
 
             scaler = MinMaxScaler()
             scale_cols = list(data.columns[1:])
@@ -128,7 +132,7 @@ class Prediction:
                    'y']]
 
             merged_data[stock_name] = data.iloc[-11:, -1]
-#
+
 # pred_machine()
 # schedule.every().hour.do(pred_machine)
 # schedule.every().day.at("6:00").do(pred_machine)

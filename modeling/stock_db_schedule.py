@@ -89,7 +89,6 @@ class UpdateDB:
         self.ohlcv = getATR()
         self.funda = stock.get_market_fundamental_by_date(self.yday, self.yday, code)[['PER', 'PBR']]
         self.value = stock.get_market_trading_value_by_date(self.yday, self.yday, code).drop(['전체'], axis=1)
-
         df = pd.concat([self.ohlcv, self.funda, self.value], axis=1)
         self.df_krx = df.reset_index()
         self.df_krx.columns = ['date', 'y', 'volume', 'atr', 'per', 'pbr', 'institution', 'corp', 'retail', 'foreign']
@@ -100,8 +99,9 @@ class UpdateDB:
     def saving(self):  # 데이터 합쳐서 db에 저장
         self.df_merge = pd.merge(self.df_krx, self.df_invest, on='date')
 
-        self.df_merge.to_sql('{}'.format(self.stockname), self.conn, if_exists='append') # 테이블명
+        self.df_merge.to_sql('{}'.format(self.stockname), self.conn, if_exists='append')  # 테이블명
         self.conn.commit()
+        #print(self.df_merge)
         print('{} inserted to DB.'.format(self.stockname))
 
 
@@ -109,7 +109,6 @@ if __name__ == "__main__":
     def update():
         updatedb = UpdateDB()  # 클래스 선언
         updatedb.mergeINVEST()   # sp, cboe, exchangerate, nasdaq, futures2y, futures10y
-
         codes = ['005930', '000660', '051910', '066570', '011070', '018260', '009150', '032830',
                  '000810', '017670', '030200', '000720', '028050', '003490', '005380', '000270',
                  '271560', '097950', '007310', '006800', '071050', '005940', '051900', '090430',
@@ -122,8 +121,8 @@ if __name__ == "__main__":
             updatedb.saving()  # db에 최종 저장
 
     # schedule.every(1).minutes.do(update)  # 1분마다 동작
-    schedule.every().day.at("05:30").do(update)  # 매일 5:30에 동작
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
+    # schedule.every().day.at("05:30").do(update)  # 매일 5:30에 동작
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1)
 
