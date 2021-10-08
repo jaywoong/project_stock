@@ -1,4 +1,7 @@
-
+var search = location.search;
+var params = new URLSearchParams(search);
+var getType = params.get('totals');
+var total = parseInt(getType)
 
 $(document).ready(function () {
     $('#radioButton').click(function () {
@@ -19,11 +22,13 @@ $(document).ready(function () {
         var res = parseInt(Q1) + parseInt(Q2) + parseInt(Q4) + parseInt(Q5) + parseInt(Q6);
 
 
-        window.location.href = "portpolio.html?res=" + res;
+        window.location.href = "portpolio.html?res=" + res + "?total=" + total;
         alert(res + '점 입니다!!');
-
-
-
 
     });
 });
+var total_asset = total;
+var risk_score = res;
+
+function opti.custom(total_asset, risk_score)
+}
