@@ -18,15 +18,13 @@ ___
 
 
 
-#### Table of Contents
+#### **Table of Contents**
 
 **:mag:[Overview](#idx1)** **:shamrock:[Process](idx2)** **:book: [Skills](#idx2)** **:dancers: [Team](#idx3)** **:clock2: [Scheduling](#idx4)**
 
 <br>
 
 ## :mag: Overview <a id="idx1"></a>
-
-------
 
 - #### **주제**
 
@@ -53,8 +51,6 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 ##  :shamrock: Process <a id= 'idx2'></a>
 
----
-
 - #### MVT pattern
 
   ![프로세스](md-images/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4.PNG)
@@ -68,34 +64,26 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
  ## :book: Skills <a id="idx3"></a>
 
----
-
 - #### 기술 스택
 
   ![환경](md-images/%ED%99%98%EA%B2%BD.PNG)
 
 - #### 디렉토리 구조
 
-  ##### **Frontend  -  [보러가기](stock/README.md) :heavy_check_mark:**
-
-  ##### **Backend**
-
-  - **Machine Learning  -  [보러가기](modeling/README.md) :heavy_check_mark:**
-  - **Scraping  -  [보러가기](scraping/README.md) :heavy_check_mark:**
-
+  * **Frontend  -  [보러가기](stock/README.md) :heavy_check_mark:**
+  * **Backend**
+    * **Machine Learning  -  [보러가기](modeling/README.md) :heavy_check_mark:**
+    * **Scraping  -  [보러가기](scraping/README.md) :heavy_check_mark:**
+  
   <br>
 
 ## :dancers: Team <a id="idx4"></a>
-
----
 
 ![팀](md-images/%ED%8C%80.PNG)
 
 <br>
 
 ## :clock2: Scheduling <a id="idx5"></a>
-
----
 
 ![일정](md-images/%EC%9D%BC%EC%A0%95.PNG)
 
