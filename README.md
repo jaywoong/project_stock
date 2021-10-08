@@ -1,16 +1,18 @@
-## ChickenStock :chicken:
+# ChickenStock :chicken:
 
 ### :chart_with_upwards_trend:주식 종가 예측 및 포트폴리오 추천:star:
 
 > 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
 
-<img src="https://img.shields.io/static/v1?label=MultiCampus&message=2조&color=olive">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=blueviolet">
+<img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=olive">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=blueviolet">
 
 
 
 #### **:bulb: 최종 구현**
 
-[YouTube 시연 영상](https://youtu.be/m00NjTMoaJs)   [결과 보고서]()  
+[YouTube시연](https://youtu.be/m00NjTMoaJs)   
+
+[결과 보고서]()  
 
 ___
 
@@ -18,11 +20,11 @@ ___
 
 #### Table of Contents
 
-**:mag:[Overview](#idx1)** **:shamrock:[Process](idx2)** **:book: [Skills](#idx2)** **:dancers: [Team Role](#idx3)** **:clock2: [Project Scheduling](#idx4)**
+**:mag:[Overview](#idx1)** **:shamrock:[Process](idx2)** **:book: [Skills](#idx2)** **:dancers: [Team](#idx3)** **:clock2: [Scheduling](#idx4)**
 
 <br>
 
-### :mag: Overview <a id="idx1"></a>
+## :mag: Overview <a id="idx1"></a>
 
 ------
 
@@ -43,13 +45,13 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 - #### 주요 기능
 
 1. **사용자 투자 성향 조사 :eyes:**
-2. **주식 종가 예측 :seedling: **
+2. **주식 종가 예측 :seedling:**
 3. **주식 포트폴리오 추천 :gift:**
 4. **추천 기업 최근 일주일 뉴스기사 제공 :newspaper:** 
 
 <br>
 
-###  :shamrock: Process <a id= 'idx2'></a>
+##  :shamrock: Process <a id= 'idx2'></a>
 
 ---
 
@@ -64,7 +66,7 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 <br>
 
- ### :book: Skills <a id="idx3"></a>
+ ## :book: Skills <a id="idx3"></a>
 
 ---
 
@@ -76,14 +78,14 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
   ##### **Frontend  -  [보러가기](stock/README.md) :heavy_check_mark:**
 
-  **Backend**
+  ##### **Backend**
 
-  - **Machine Learning  -  [보러가기](modeling/README.md) :heavy_check_mark: **
-  - **Scraping  -  [보러가기](scraping/README.md) :heavy_check_mark: **
+  - **Machine Learning  -  [보러가기](modeling/README.md) :heavy_check_mark:**
+  - **Scraping  -  [보러가기](scraping/README.md) :heavy_check_mark:**
 
   <br>
 
-### :dancers: Team  <a id="idx4"></a>
+## :dancers: Team <a id="idx4"></a>
 
 ---
 
@@ -91,7 +93,7 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 <br>
 
-### :clock2: Project Scheduling <a id="idx5"></a>
+## :clock2: Scheduling <a id="idx5"></a>
 
 ---
 
