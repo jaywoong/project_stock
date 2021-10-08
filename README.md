@@ -96,3 +96,20 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 * #### WBS
 
 ![WBS](md-images/WBS.PNG)
+
+* #### LSTM
+
+![vis_1](md-images/vis_1-1633675650103.png)
+
+* #### SLSQP
+
+![vis_3](md-images/vis_3-1633675688815.png)
+
+* #### WEB(parameter 전송)
+
+  
+
+![vis_4](md-images/vis_4.png)
+
+html에서 다음 html로 넘어갈 때 파라미터를 전송하는 코드
+
