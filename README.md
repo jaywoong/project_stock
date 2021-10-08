@@ -3,6 +3,8 @@
 ### :chart_with_upwards_trend:주식 종가 예측 및 포트폴리오 추천:star:
 
 > 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
+>
+> 참여 :  [jaywoong](https://github.com/jaywoong),  [mmeooo](https://github.com/mmeooo),  [00FFEF](https://github.com/00FFEF),  [top430](https://github.com/top430),  [yoojunwoong](https://github.com/yoojunwoong)
 
 <img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=yellow">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=green">
 
@@ -10,9 +12,7 @@
 
 #### **:bulb: 최종 구현**
 
-[YouTube시연](https://youtu.be/m00NjTMoaJs)   
-
-[결과 보고서](md-images/chickenstock.pdf)  
+**[YouTube시연](https://youtu.be/m00NjTMoaJs)** &nbsp;&nbsp; **[결과 보고서](md-images/chickenstock.pdf)**
 
 ___
 
