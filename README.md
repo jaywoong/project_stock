@@ -12,7 +12,7 @@
 
 [YouTube시연](https://youtu.be/m00NjTMoaJs)   
 
-[결과 보고서](md-images/chickenstock.pdf)  
+[결과 보고서](md-images/ChickenStock.pdf)  
 
 ___
 
