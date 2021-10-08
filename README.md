@@ -4,7 +4,7 @@
 
 > 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
 
-<img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=olive">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=blueviolet">
+<img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=yellow">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=green">
 
 
 
