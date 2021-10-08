@@ -1,6 +1,6 @@
 # ChickenStock :chicken:
 
-### :chart_with_upwards_trend:주식 종가 예측 및 포트폴리오 추천:star:
+### :chart_with_upwards_trend: 주식 종가 예측 및 포트폴리오 추천 :star:
 
 > 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
 >
@@ -8,13 +8,9 @@
 
 <img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=yellow">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=green">
 
-<br>
-
 #### **:bulb: 최종 구현**
 
 **[YouTube시연](https://youtu.be/m00NjTMoaJs)** &nbsp;&nbsp; **[결과 보고서](md-images/chickenstock.pdf)**
-
-<br>
 
 ####  **Table of Contents**
 
@@ -59,6 +55,14 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
   ![ERD](md-images/ERD.png)
 
+* #### 요구사항 정의서
+
+  ![요구사항정의서](md-images/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C.PNG)
+
+* #### 화면 정의서
+
+  | ![화면정의서2](md-images/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C2.PNG) | ![화면정의서](md-images/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C.PNG) |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 <br>
 
@@ -89,5 +93,6 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 
 
+* #### WBS
 
-
+![WBS](md-images/WBS.PNG)
