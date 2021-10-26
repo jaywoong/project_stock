@@ -81,7 +81,7 @@ ___
 
 - ###  **Team Role**
 
-<img src="md-images/팀.PNG" style="zoom:15%;" />
+<img src="md-images/팀.PNG" style="zoom:10%;" />
 
 * ### **Project Plan** 
 
@@ -95,13 +95,13 @@ ___
 
 * #### **주가 예측 모델 비교**
 
-<center><img src="md-images/ARIMA.png" style="width:85%; height:auto;"><center/>
+<p align="center"><img src="md-images/ARIMA.png" style="width:88%; height:auto;"><p/>
 
-<center><img src="md-images/fbprophet.png"style="width:85%; height:auto;"><center/>
+<p align="center"><img src="md-images/fbprophet.png"style="width:88%; height:auto;"><p/>
 
 
 
-<center><img src="md-images/lstm.png" style="width:75%; height:auto;"><center/>
+<p align="center"><img src="md-images/lstm.png" style="width:75%; height:auto;"><pr/>
 
 
 
@@ -121,7 +121,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 
 
-단순히 120일 이후의 가격을 예측하는 방법과, 미래의 Feature값을 fbprophet을 통해 예측하고 예측한 값을 다시 LSTM 모델에 학습시키는 과정을 반복해 10 일 뒤 종가를 예측하는 방법을 비교한 결과, LSTM+fbprophet모델이 우수한 성능을 보였으며, 모델 성능의 발전 가능성이 높은 것으로 사료되어  LSTM+fbprophet모델을 채택하였습니다.
+ :point_right:  단순히 120일 이후의 가격을 예측하는 방법과, 미래의 Feature값을 fbprophet을 통해 예측하고 예측한 값을 다시 LSTM 모델에 학습시키는 과정을 반복해 10 일 뒤 종가를 예측하는 방법을 비교한 결과, LSTM+fbprophet모델이 우수한 성능을 보였으며, 모델 성능의 발전 가능성이 높은 것으로 사료되어  LSTM+fbprophet모델을 채택하였습니다.
 
 
 
