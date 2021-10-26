@@ -46,7 +46,7 @@ ___
   * NASDAQ, S&P 500, CBOE VIX, 원 달러 환율, 2년만기 미국채 선물, 10년만기 미국채 선물 
   * https://kr.investing.com/indices/nasdaq-composite-historical-data
 * **개별주 관련 지표**
-  * 거래량, PER, PBR, ATR, 투자자별 거래실적
+  * 거래량, PER, PBR, ATR(종가, 고가, 저가), 투자자별 거래실적
   * http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 #### :four: 주요 기능
