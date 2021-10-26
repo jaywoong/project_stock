@@ -81,11 +81,11 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" width="400" height="200" />
+<img src="md-images/팀.PNG" width="670" height="330" />
 
 * ### Project Plan 
 
-<img src="md-images/일정.PNG" style="zoom:40%;" />
+<img src="md-images/일정.PNG" width="670" height="330"/>
 
 <br>
 
@@ -95,9 +95,9 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<img src="md-images/ARIMA.png" width="580" height="350"/>
+<img src="md-images/ARIMA.png" width="650" height="330"/>
 
-<img src="md-images/fbprophet.png" width="580" height="350"/>
+<img src="md-images/fbprophet.png" width="650" height="330"/>
 
 
 
@@ -127,7 +127,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<img src="md-images/portfolio.jpg"  style="zoom:35%;" >
+<img src="md-images/portfolio.jpg" width="500" height="250">
 
 * #### 포트폴리오 추천 모델 구축
 
