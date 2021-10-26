@@ -2,19 +2,21 @@
 
 ### :chart_with_upwards_trend: 주식 종가 예측 및 포트폴리오 추천 :star:
 
-> 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다.
+> 멀티캠퍼스  '빅데이터 기반 지능형 서비스 개발'  과정에서 진행한 파이널 프로젝트입니다
 >
 > 참여 :  [jaywoong](https://github.com/jaywoong),  [mmeooo](https://github.com/mmeooo),  [00FFEF](https://github.com/00FFEF),  [top430](https://github.com/top430),  [yoojunwoong](https://github.com/yoojunwoong)
+>
+> 기간 : 2021.09.06 ~ 2021.10.08
 
 <img src="https://img.shields.io/static/v1?label=MultiCampus&message=Team2&color=yellow">	<img src="https://img.shields.io/static/v1?label=Domain&message=Bigdata&color=green">
 
 #### **:bulb: 최종 구현**
 
-**[YouTube시연](https://youtu.be/m00NjTMoaJs)** &nbsp;&nbsp; **[결과 보고서](md-images/chickenstock.pdf)**
+**[YouTube시연](https://youtu.be/m00NjTMoaJs)** &nbsp;&nbsp; **[결과보고서](md-images/chickenstock.pdf)**
 
 ####  **Table of Contents**
 
-**:mag:[Overview](#idx1)** **:shamrock:[Process](#idx2)** **:book: [Skills](#idx2)** **:dancers: [Team](#idx3)** **:clock2: [Scheduling](#idx4)**
+**:mag:[Overview](#idx1)**  **:shamrock:[Process](#idx2)**  **:book: [Skills](#idx2)**  **:dancers: [Team](#idx3)**  **:clock2: [Scheduling](#idx4)**  **:hammer: [Modeling](#idx5)**
 
 ___
 
@@ -48,21 +50,18 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 ##  :shamrock: Process <a id= 'idx2'></a>
 
 - #### MVT pattern
-
-  ![프로세스](md-images/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4.PNG)
+  <img src="md-images/프로세스.PNG" width=70% height=60%/>
 
 - #### ERD
 
-  ![ERD](md-images/ERD.png)
-
-* #### 요구사항 정의서
-
-  ![요구사항정의서](md-images/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C.PNG)
-
-* #### 화면 정의서
-
-  | ![화면정의서2](md-images/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C2.PNG) | ![화면정의서](md-images/%ED%99%94%EB%A9%B4%EC%A0%95%EC%9D%98%EC%84%9C.PNG) |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  <img src="md-images/ERD.png" width=60% height=60%/>
+  
+- #### 프로젝트 산출물
+   * **WBS with Gantt Chart- [보러가기](https://docs.google.com/spreadsheets/d/1p-GPu5G6td5hkA7z9YXG2BhNy6Scw2k5/edit?usp=sharing&ouid=101019567947057551589&rtpof=true&sd=true) :heavy_check_mark:**
+   * **와이어프레임 - [보러가기](md-images/wireframe.png) :heavy_check_mark:**
+   * **요구사항 정의서 - [보러가기](https://docs.google.com/spreadsheets/d/1GvaA6mY9RHKyGHXjK7JKzFMXS99q8S-w2CC5LUHPJYQ/edit?usp=sharing) :heavy_check_mark:**
+   * **화면 정의서 - [보러가기](https://docs.google.com/presentation/d/1JZxg_nooMLJrf_V7qvjJE8uLgT7kMctWmcBUyPsRvMU/edit?usp=sharing) :heavy_check_mark:**
+  
 
 <br>
 
@@ -70,51 +69,37 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 - #### 기술 스택
 
-  ![환경](md-images/%ED%99%98%EA%B2%BD.PNG)
+  <img src="md-images/기술스택.PNG" style="zoom:70%;" />
 
-- #### 디렉토리 구조
-
-  * **Frontend  -  [보러가기](stock/README.md) :heavy_check_mark:**
-  * **Backend**
-    * **Machine Learning  -  [보러가기](modeling/README.md) :heavy_check_mark:**
-    * **Scraping  -  [보러가기](scraping/README.md) :heavy_check_mark:**
   
+
   <br>
 
 ## :dancers: Team <a id="idx4"></a>
 
-![팀](md-images/%ED%8C%80.PNG)
+<img src="md-images/팀.PNG" style="zoom:70%;" />
 
 <br>
 
 ## :clock2: Scheduling <a id="idx5"></a>
 
-![일정](md-images/%EC%9D%BC%EC%A0%95.PNG)
+<img src="md-images/일정.PNG" style="zoom:70%;" />
 
 
 
-* #### WBS
+#### 
 
-![WBS](md-images/WBS.PNG)
+## :hammer: Modeling <a id="idx5"></a>
 
-<<<<<<< HEAD
+* 주가 예측 모델 비교
 
+<img src="md-images/ARIMA.png" alt="ARIMA" style="zoom:60%;" />
 
-
-
-## 주가 예측 모델 
-
-#### 예측 모델 비교
+<img src="md-images/fbprophet.png" alt="fbprophet" style="zoom:60%;" />
 
 
 
-![ARIMA](md-images/ARIMA-16336761810101.png)
-
-![fbprophet](md-images/fbprophet-16336761905662.png)
-
-
-
-![lstm](md-images/lstm.png)
+<img src="md-images/lstm.png" alt="lstm" style="zoom:60%;" />
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
@@ -124,13 +109,13 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 
 
-![lstm_detail](md-images/lstm_detail.png)
+<img src="md-images/lstm_detail.png" style="zoom:80%;" />
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
 
 
-![lstm+fbprophet](md-images/lstm+fbprophet.png)
+<img src="md-images/lstm_fbprophet.png" style="zoom:80%;" />
 
 10 거래일 이후의 종가를 예측하기 위해 두가지 방법으로 LSTM모델을 응용하였습니다.
 
@@ -146,7 +131,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-![mvp](md-images/mvp.jpg)
+<img src="md-images/portfolio.jpg" alt="portflio" style="zoom:80%;" />
 
 
 
@@ -154,22 +139,5 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
-![portfolio visualization](md-images/portfolio%20visualization.png)
-=======
-* #### LSTM
-
-![vis_1](md-images/vis_1-1633675650103.png)
-
-* #### SLSQP
-
-![vis_3](md-images/vis_3-1633675688815.png)
-
-* #### WEB(parameter 전송)
-
-  
-
-![vis_4](md-images/vis_4.png)
-
-html에서 다음 html로 넘어갈 때 파라미터를 전송하는 코드
->>>>>>> e44b87b7ca785f289d6fb25d15a9e64d15951fde
+<img src="md-images/portfolio visualization.png" style="zoom:80%;" />
 
