@@ -95,13 +95,13 @@ ___
 
 * #### **주가 예측 모델 비교**
 
-<center><img src="md-images/ARIMA.png" style="width:80%; height:auto;"><center/>
+<center><img src="md-images/ARIMA.png" style="width:85%; height:auto;"><center/>
 
-<center><img src="md-images/fbprophet.png"style="width:80%; height:auto;"><center/>
+<center><img src="md-images/fbprophet.png"style="width:85%; height:auto;"><center/>
 
 
 
-<center><img src="md-images/lstm.png" style="width:70%; height:auto;"><center/>
+<center><img src="md-images/lstm.png" style="width:75%; height:auto;"><center/>
 
 
 
@@ -131,7 +131,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<center><img src="md-images/portfolio.jpg" style="width:65%; height:auto;"><center/>
+<p align="center"><img src="md-images/portfolio.jpg" style="width:72%; height:auto;"><p/>
 
 
 
@@ -139,7 +139,8 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
-<center><img src="md-images/portfolio visualization.png" style="zoom:70%;"><center/>
+<p align="center"><img src="md-images/portfolio_visualization.png" style="zoom:70%;"><p/>
+
 
 
 <br>
@@ -150,15 +151,17 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
 - **데이터 수집 대상**
 
+  포트폴리오 분산을 위해 25개 산업군 중 대표주인  50개 기업을 선정했습니다.  
+
   `삼성전자, SK하이닉스, LG화학, LG전자, LG이노텍, 삼성에스디에스, 삼성전기, 삼성생명, 삼성화재, SK텔레콤, KT, 현대건설, 삼성엔지니어링, 대한항공, 현대차, 기아, 오리온, CJ제일제당, 오뚜기, 미래에셋대우, 한국금융지주, NH투자증권, LG생활건강, 아모레퍼시픽, 아모레G, 강원랜드, 호텔신라, KB금융, 신한지주, 하나금융지주, 롯데쇼핑, 이마트, 신세계, GS리테일, NAVER, 카카오, CJENM, 스튜디오드래곤, 삼성바이오로직스, 셀트리온, 한미약품, 엔씨소프트, 넷마블, 한화솔루션, LS, POSCO,고려아연, S-Oil, SK이노베이션, HMM`
 
 - **데이터 출처 및 수집 방법**
 
-  - 공통 거시 경제 지표 중 `S&P, CBOE` 는 `DataFinanceReader` 모듈을 통해 수집하고, `NASDAQ, futures2y, futures10y` 은 [인베스팅닷컴](https://kr.investing.com/indices/nasdaq-composite-historical-data)  스크래핑을 통해 수집했습니다.
+  - 공통 거시 경제 지표 중 `S&P, CBOE` 는 `DataFinanceReader` 모듈을 통해 수집하고, `NASDAQ, futures2y, futures10y` 은  [Investing.com](https://kr.investing.com/indices/nasdaq-composite-historical-data)  스크래핑을 통해 수집했습니다.
 
-  - 개별주 관련 지표인 `거래량, atr, PER, PBR, 기관합계, 기타법인, 개인, 외국인합계` 는 [KRX](http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd) 데이터를 제공하는 `pykrx` 모듈을 통해 수집했습니다. 
+  - 개별주 관련 지표인 `거래량, atr, PER, PBR, 기관합계, 기타법인, 개인, 외국인합계` 는  [KRX](http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd) 의 데이터를 제공하는 `pykrx` 모듈을 통해 수집했습니다. 
 
-  - [빅카인즈](https://www.bigkinds.or.kr/) 에서 기업별 최근 일주일 뉴스기사를 스크래핑하여 수집해 웹에서 제공했습니다.
+  - [BIG KINDS](https://www.bigkinds.or.kr/) 에서 기업별 최근 일주일 뉴스기사를 스크래핑하여 수집해 웹에서 제공했습니다.
 
   ```python
   # scraping/bigkinds_db_schedule.py
@@ -199,7 +202,7 @@ class UpdateDB:
         
    def saving(self):  
         self.df_merge = pd.merge(self.df_krx, self.df_invest, on='date')
-        self.df_merge.to_sql('{}'.format(self.stockname), self.conn, 	if_exists='append')  
+        self.df_merge.to_sql('{}'.format(self.stockname), self.conn, if_exists='append')  
         self.conn.commit()
         
 ```
@@ -221,3 +224,32 @@ def news(request):
     return render(request, 'news.html', result)
 
 ```
+
+
+
+### :three:  Scheduling
+
+* 지속적인 서비스를 위해 특정 시간이 되면 주어진 스크립트를 자동으로 실행하는  `schedule` 라이브러리를 적용했습니다.
+
+  ``` python
+  # modeling/stock_db_schedule.py
+  
+  import schedule
+  if __name__ == "__main__":
+      def update():
+          updatedb = UpdateDB()  
+          updatedb.mergeINVEST()    
+          codes = ['005930', '000660', '051910',,, ]
+          for code in codes:
+              updatedb.getKRX(code) 
+              updatedb.saving()
+              
+  	schedule.every().day.at("05:30").do(update) 
+      while True: 
+          schedule.run_pending()
+          time.sleep(1)
+          
+  ```
+
+* 위의 스크립트가 매일 05:30에 실행되어, 전날의 데이터가 DB에 업데이트됩니다. 
+
