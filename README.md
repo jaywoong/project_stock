@@ -81,11 +81,11 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" width="550" height="280" />
+<img src="md-images/팀.PNG" width="500" height="260" />
 
 * ### Project Plan 
 
-<img src="md-images/일정.PNG" width="600" height="300"/>
+<img src="md-images/일정.PNG" width="560" height="280"/>
 
 <br>
 
@@ -95,19 +95,19 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<center><img src="md-images/ARIMA.png" width="630" height="330"><center/>
+<center><img src="md-images/ARIMA.png" width="610" height="330"><center/>
 
-<center><img src="md-images/fbprophet.png" width="630" height="330"><center/>
+<center><img src="md-images/fbprophet.png" width="610" height="330"><center/>
 
 
 
-<center><img src="md-images/lstm.png" width="540" height="300"><center/>
+<center><img src="md-images/lstm.png" width="510" height="280"><center/>
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
 
 
-* #### LSTM을 활용한 주가 예측 모델 개발<center><img src="md-images/lstm_detail.png" style="zoom:65%;"><center/>
+* #### LSTM을 활용한 주가 예측 모델 개발<center><img src="md-images/lstm_detail.png" style="zoom:55%;"><center/>
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
