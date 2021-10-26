@@ -63,11 +63,11 @@ ___
 
 - ### MVT pattern
 
-  <img src="md-images/프로세스.PNG" width=70% height=60%/>
+  <img src="md-images/프로세스.PNG" style="zoom:50%;" />
 
 - ### ERD -  :link: [ERDcloud](https://www.erdcloud.com/p/mq6ZdjhBwyH6Bsomj) 
 
-  <img src="md-images/ERD.png" width=60% height=60%/>
+  <img src="md-images/ERD.png" style="zoom:45%;" >
 
 - ### 프로젝트 산출물
    * **WBS with Gantt Chart- [보러가기](https://docs.google.com/spreadsheets/d/1p-GPu5G6td5hkA7z9YXG2BhNy6Scw2k5/edit?usp=sharing&ouid=101019567947057551589&rtpof=true&sd=true) :heavy_check_mark:**
@@ -81,11 +81,11 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" style="zoom:35%;" />
+<img src="md-images/팀.PNG" style="zoom:20%;" />
 
 * ### Project Plan 
 
-<img src="md-images/일정.PNG" style="zoom:50%;" />
+<img src="md-images/일정.PNG" style="zoom:45%;" />
 
 <br>
 
@@ -95,19 +95,19 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<img src="md-images/ARIMA.png" style="zoom:30%;" />
+<img src="md-images/ARIMA.png" style="zoom:25%;" />
 
-<img src="md-images/fbprophet.png" style="zoom:30%;" />
+<img src="md-images/fbprophet.png" style="zoom:25%;" />
 
 
 
-<img src="md-images/lstm.png" style="zoom:25%;" />
+<img src="md-images/lstm.png" style="zoom:15%;" />
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
 
 
-* #### LSTM을 활용한 주가 예측 모델 개발<img src="md-images/lstm_detail.png" style="zoom:70%;" />
+* #### LSTM을 활용한 주가 예측 모델 개발<img src="md-images/lstm_detail.png" style="zoom:65%;" />
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
@@ -127,13 +127,13 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<img src="md-images/portfolio.jpg"  style="zoom:55%;" />
+<img src="md-images/portfolio.jpg"  style="zoom:50%;" />
 
 * #### 포트폴리오 추천 모델 구축
 
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
-<img src="md-images/portfolio visualization.png" style="zoom:70%;" />
+<img src="md-images/portfolio visualization.png" style="zoom:70%;center;" />
 
 <br>
 
