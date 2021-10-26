@@ -32,15 +32,15 @@ ___
 
 ## :mag: Overview <a id="idx1"></a>
 
-#### :one: 주제
+### :one: 주제
 
 주식 종가 예측 모델링에 그치지 않고, 포트폴리오 모델을  활용하여 투자자의 투자 성향에 따른 주식 포트폴리오를 추천해주는 서비스 
 
-#### :two: 필요성 
+### :two: 필요성 
 
 투자자의 성향을 고려하지 않고 개별 종목과 포트폴리오를 추천해 줄 경우  손실을 인내하기 쉽지 않다.  따라서 개별주의 종가를 예측하고,  예상 가격, 변동성, 리스크 등을 고려하여 투자자에게 최적화된 포트폴리오를 구성하는 모델을 구축하고자 한다. 가격예측 모델과 포트폴리오 모델을 활용하여,  고객의 투자 성향 및 위험 감내 수준에 따른 주식 포트폴리오 추천 서비스를 제공하려 한다.
 
-#### :three: 데이터
+### :three: 데이터
 
 * **공통 거시 경제 지표**
   * NASDAQ, S&P 500, CBOE VIX, 원 달러 환율, 2년만기 미국채 선물, 10년만기 미국채 선물 
@@ -49,7 +49,7 @@ ___
   * 거래량, PER, PBR, ATR(종가, 고가, 저가), 투자자별 거래실적
   * http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
-#### :four: 주요 기능
+### :four: 주요 기능
 
 * **사용자 투자 성향 조사 :eyes:** 
 
@@ -61,29 +61,29 @@ ___
 
 ##  :shamrock: Process <a id= 'idx2'></a>
 
-- ### MVT pattern
+- ### **MVT pattern**
 
   <img src="md-images/프로세스.PNG" style="zoom:50%;" />
 
-- ### ERD -  :link: [ERDcloud](https://www.erdcloud.com/p/mq6ZdjhBwyH6Bsomj) 
+- ### **ERD** -  :link: [ERDcloud](https://www.erdcloud.com/p/mq6ZdjhBwyH6Bsomj) 
 
   <img src="md-images/ERD.png" style="zoom:45%;" >
 
-- ### Project Output
+- ### **Project Output**
    * **WBS with Gantt Chart- [보러가기](https://docs.google.com/spreadsheets/d/1p-GPu5G6td5hkA7z9YXG2BhNy6Scw2k5/edit?usp=sharing&ouid=101019567947057551589&rtpof=true&sd=true) :heavy_check_mark:**
    * **와이어프레임 - [보러가기](md-images/wireframe.png) :heavy_check_mark:**
    * **요구사항 정의서 - [보러가기](https://docs.google.com/spreadsheets/d/1GvaA6mY9RHKyGHXjK7JKzFMXS99q8S-w2CC5LUHPJYQ/edit?usp=sharing) :heavy_check_mark:**
    * **화면 정의서 - [보러가기](https://docs.google.com/presentation/d/1JZxg_nooMLJrf_V7qvjJE8uLgT7kMctWmcBUyPsRvMU/edit?usp=sharing) :heavy_check_mark:**
 
-- ### Tech Stack
+- ### **Tech Stack**
 
   <img src="md-images/기술스택.PNG" style="zoom:50%;" />
 
-- ###  Team  Role
+- ###  **Team Role**
 
-<img src="md-images/팀.PNG" style="zoom:25%;" />
+<img src="md-images/팀.PNG" style="zoom:15%;" />
 
-* ### Project Plan 
+* ### **Project Plan** 
 
 <img src="md-images/일정.PNG" style="zoom:30%;" />
 
@@ -91,16 +91,17 @@ ___
 
 ## :hammer: Modeling <a id="idx3"></a>
 
-#### :one: 주가 예측 모델
+### :one: 주가 예측 모델
 
-* #### 주가 예측 모델 비교
+* #### **주가 예측 모델 비교**
 
-<center><img src="md-images/ARIMA.png" style="max-width:60%; height:auto;"><center/>
+<center><img src="md-images/ARIMA.png" style="width:50%; height:auto;"><center/>
 
-<center><img src="md-images/fbprophet.png"style="max-width:60%; height:auto;"><center/>
+<center><img src="md-images/fbprophet.png"style="width:50%; height:auto;"><center/>
 
 
-<center><img src="md-images/lstm.png" style="max-width:55%; height:auto;"><center/>
+
+<center><img src="md-images/lstm.png" style="width:40%; height:auto;"><center/>
 
 
 
@@ -108,7 +109,9 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 
 
-* #### LSTM을 활용한 주가 예측 모델 개발<center><img src="md-images/lstm_detail.png" style="zoom:55%;"><center/>
+* #### **LSTM을 활용한 주가 예측 모델 개발**
+
+  <center><img src="md-images/lstm_detail.png" style="zoom:55%;"><center/>
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
@@ -122,13 +125,14 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 
 
-#### :two: 포트폴리오 추천 모델
+### :two: 포트폴리오 추천 모델
 
-* #### MVP(Minimum Volatility Portfolio, 최소 분산 포트폴리오)
+* #### **MVP**(Minimum Volatility Portfolio, 최소 분산 포트폴리오)
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<center><img src="md-images/portfolio.jpg" style="max-width:60%; height:auto;"><center/>
+<center><img src="md-images/portfolio.jpg" style="width:55%; height:auto;"><center/>
+
 
 
 * #### 포트폴리오 추천 모델 구축
@@ -142,13 +146,13 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
 ##    :alarm_clock: Data Scheduling<a id="idx4"></a>
 
-#### :one: 데이터 수집
+### :one: 데이터 수집
 
-- 데이터 수집 대상
+- **데이터 수집 대상**
 
   `삼성전자, SK하이닉스, LG화학, LG전자, LG이노텍, 삼성에스디에스, 삼성전기, 삼성생명, 삼성화재, SK텔레콤, KT, 현대건설, 삼성엔지니어링, 대한항공, 현대차, 기아, 오리온, CJ제일제당, 오뚜기, 미래에셋대우, 한국금융지주, NH투자증권, LG생활건강, 아모레퍼시픽, 아모레G, 강원랜드, 호텔신라, KB금융, 신한지주, 하나금융지주, 롯데쇼핑, 이마트, 신세계, GS리테일, NAVER, 카카오, CJENM, 스튜디오드래곤, 삼성바이오로직스, 셀트리온, 한미약품, 엔씨소프트, 넷마블, 한화솔루션, LS, POSCO,고려아연, S-Oil, SK이노베이션, HMM`
 
-- 데이터 출처 및 수집 방법
+- **데이터 출처 및 수집 방법**
 
   - 공통 거시 경제 지표 중 `S&P, CBOE` 는 `DataFinanceReader` 모듈을 통해 수집하고, `NASDAQ, futures2y, futures10y` 은 [인베스팅닷컴](https://kr.investing.com/indices/nasdaq-composite-historical-data)  스크래핑을 통해 수집했습니다.
 
@@ -180,7 +184,7 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
   
   
 
-#### :two: SQLite3 연동
+### :two: SQLite3 연동
 
 * 수집한 데이터를 DataFrame으로 합쳐 sqlite3에 저장하였습니다.
 
