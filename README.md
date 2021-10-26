@@ -14,9 +14,19 @@
 
 **[YouTube시연](https://youtu.be/m00NjTMoaJs)** &nbsp;&nbsp; **[결과보고서](md-images/chickenstock.pdf)**
 
+
+
+------
+
 ####  **Table of Contents**
 
-**:mag:[Overview](#idx1)**  **:shamrock:[Process](#idx2)**  **:book: [Skills](#idx2)**  **:dancers: [Team](#idx3)**  **:clock2: [Scheduling](#idx4)**  **:hammer: [Modeling](#idx5)**
+1. :mag: [Overview](#idx1)
+
+2. :shamrock:  [Process](#idx2)  
+3. :book:  [Skills](#idx2)
+4.   :dancers:  [Team](#idx3) 
+5.  :clock2:  [Scheduling](#idx4)
+6.   :hammer:  [Modeling](#idx5)
 
 ___
 
@@ -34,16 +44,27 @@ ___
 
 - #### **데이터**
 
-https://kr.investing.com/indices/nasdaq-composite-historical-data
+1. 공통 거시 경제 지표
 
-http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
+   NASSAQ, S&P 500, CBOE VIX, 원 달러 환율, 2년만기 미국채 선물, 10년만기 미국채 선물 
+
+   https://kr.investing.com/indices/nasdaq-composite-historical-data
+
+2. 개별주 관련 지표
+
+   거래량, PER, PBR, ATR, 투자자별 순매수
+
+   http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 - #### 주요 기능
 
-1. **사용자 투자 성향 조사 :eyes:**
-2. **주식 종가 예측 :seedling:**
-3. **주식 포트폴리오 추천 :gift:**
-4. **추천 기업 최근 일주일 뉴스기사 제공 :newspaper:** 
+  **:eyes: 사용자 투자 성향 조사**
+
+  **:seedling: 주식 종가 예측**
+
+  **:gift: 주식 포트폴리오 추천**
+
+  **:newspaper: 추천 기업 최근 일주일 뉴스기사 제공**
 
 <br>
 
@@ -52,8 +73,8 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 - #### MVT pattern
   <img src="md-images/프로세스.PNG" width=70% height=60%/>
 
-- #### ERD
-
+  - #### ERD - [보러가기]( )  :heavy_check_mark:
+  
   <img src="md-images/ERD.png" width=60% height=60%/>
   
 - #### 프로젝트 산출물
@@ -61,7 +82,7 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
    * **와이어프레임 - [보러가기](md-images/wireframe.png) :heavy_check_mark:**
    * **요구사항 정의서 - [보러가기](https://docs.google.com/spreadsheets/d/1GvaA6mY9RHKyGHXjK7JKzFMXS99q8S-w2CC5LUHPJYQ/edit?usp=sharing) :heavy_check_mark:**
    * **화면 정의서 - [보러가기](https://docs.google.com/presentation/d/1JZxg_nooMLJrf_V7qvjJE8uLgT7kMctWmcBUyPsRvMU/edit?usp=sharing) :heavy_check_mark:**
-  
+
 
 <br>
 
@@ -69,37 +90,35 @@ http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
 
 - #### 기술 스택
 
-  <img src="md-images/기술스택.PNG" style="zoom:70%;" />
+  <img src="md-images/기술스택.PNG" style="zoom:50%;" />
 
-  
+- 
 
   <br>
 
 ## :dancers: Team <a id="idx4"></a>
 
-<img src="md-images/팀.PNG" style="zoom:70%;" />
+<img src="md-images/팀.PNG" style="zoom:50%;" />
 
 <br>
 
 ## :clock2: Scheduling <a id="idx5"></a>
 
-<img src="md-images/일정.PNG" style="zoom:70%;" />
+<img src="md-images/일정.PNG" style="zoom:60%;" />
 
 
-
-#### 
 
 ## :hammer: Modeling <a id="idx5"></a>
 
 * 주가 예측 모델 비교
 
-<img src="md-images/ARIMA.png" alt="ARIMA" style="zoom:60%;" />
+<img src="md-images/ARIMA.png" alt="ARIMA" style="zoom:40%;" />
 
-<img src="md-images/fbprophet.png" alt="fbprophet" style="zoom:60%;" />
+<img src="md-images/fbprophet.png" alt="fbprophet" style="zoom:40%;" />
 
 
 
-<img src="md-images/lstm.png" alt="lstm" style="zoom:60%;" />
+<img src="md-images/lstm.png" alt="lstm" style="zoom:45%;" />
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
@@ -131,7 +150,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<img src="md-images/portfolio.jpg" alt="portflio" style="zoom:80%;" />
+<img src="md-images/portfolio.jpg"  style="zoom:70%;" />
 
 
 
@@ -139,5 +158,5 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
-<img src="md-images/portfolio visualization.png" style="zoom:80%;" />
+<img src="md-images/portfolio visualization.png" style="zoom:70%;" />
 
