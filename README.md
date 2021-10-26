@@ -81,11 +81,11 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" width="670" height="330" />
+<img src="md-images/팀.PNG" width="550" height="280" />
 
 * ### Project Plan 
 
-<img src="md-images/일정.PNG" width="670" height="330"/>
+<img src="md-images/일정.PNG" width="600" height="300"/>
 
 <br>
 
@@ -95,23 +95,23 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<img src="md-images/ARIMA.png" width="650" height="330"/>
+<center><img src="md-images/ARIMA.png" width="630" height="330"><center/>
 
-<img src="md-images/fbprophet.png" width="650" height="330"/>
+<center><img src="md-images/fbprophet.png" width="630" height="330"><center/>
 
 
 
-<img src="md-images/lstm.png" width="540" height="300"/>
+<center><img src="md-images/lstm.png" width="540" height="300"><center/>
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
 
 
-* #### LSTM을 활용한 주가 예측 모델 개발<img src="md-images/lstm_detail.png" style="zoom:65%;" />
+* #### LSTM을 활용한 주가 예측 모델 개발<center><img src="md-images/lstm_detail.png" style="zoom:65%;"><center/>
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
-<img src="md-images/lstm_fbprophet.png" style="zoom:75%;" />
+<center><img src="md-images/lstm_fbprophet.png" style="zoom:75%;"><center/>
 
 10 거래일 이후의 종가를 예측하기 위해 두가지 방법으로 LSTM모델을 응용하였습니다.
 
@@ -127,13 +127,14 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<img src="md-images/portfolio.jpg" width="500" height="250">
+<center><img src="md-images/portfolio.jpg" width="500" height="250"><center/>
 
 * #### 포트폴리오 추천 모델 구축
 
 최적화 알고리즘 SLSQP(Sequential Least SQuares Programming)를 이용함으로써 최소분산포트폴리오의 투자 비중을 찾아냈습니다. 
 
 <center><img src="md-images/portfolio visualization.png" style="zoom:70%;"><center/>
+
 
 <br>
 
