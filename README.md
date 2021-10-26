@@ -95,13 +95,13 @@ ___
 
 * #### **주가 예측 모델 비교**
 
-<center><img src="md-images/ARIMA.png" style="width:50%; height:auto;"><center/>
+<center><img src="md-images/ARIMA.png" style="width:80%; height:auto;"><center/>
 
-<center><img src="md-images/fbprophet.png"style="width:50%; height:auto;"><center/>
+<center><img src="md-images/fbprophet.png"style="width:80%; height:auto;"><center/>
 
 
 
-<center><img src="md-images/lstm.png" style="width:40%; height:auto;"><center/>
+<center><img src="md-images/lstm.png" style="width:70%; height:auto;"><center/>
 
 
 
@@ -131,7 +131,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<center><img src="md-images/portfolio.jpg" style="width:55%; height:auto;"><center/>
+<center><img src="md-images/portfolio.jpg" style="width:65%; height:auto;"><center/>
 
 
 
