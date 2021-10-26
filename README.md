@@ -81,7 +81,7 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" style="zoom:45%;" />
+<img src="md-images/팀.PNG" style="zoom:35%;" />
 
 * ### Project Plan 
 
@@ -95,23 +95,23 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<img src="md-images/ARIMA.png" alt="ARIMA" style="zoom:35%;" />
+<img src="md-images/ARIMA.png" style="zoom:30%;" />
 
-<img src="md-images/fbprophet.png" style="zoom:35%;" />
+<img src="md-images/fbprophet.png" style="zoom:30%;" />
 
 
 
-<img src="md-images/lstm.png" alt="lstm" style="zoom:35%;" />
+<img src="md-images/lstm.png" style="zoom:25%;" />
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
 
 
-* #### LSTM을 활용한 주가 예측 모델 개발<img src="md-images/lstm_detail.png" style="zoom:80%;" />
+* #### LSTM을 활용한 주가 예측 모델 개발<img src="md-images/lstm_detail.png" style="zoom:70%;" />
 
 과거 120일 간의 데이터를 통해 내일의 주가를 예측하는 모델을 구성하였습니다.
 
-<img src="md-images/lstm_fbprophet.png" style="zoom:80%;" />
+<img src="md-images/lstm_fbprophet.png" style="zoom:75%;" />
 
 10 거래일 이후의 종가를 예측하기 위해 두가지 방법으로 LSTM모델을 응용하였습니다.
 
@@ -127,7 +127,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<img src="md-images/portfolio.jpg"  style="zoom:65%;" />
+<img src="md-images/portfolio.jpg"  style="zoom:55%;" />
 
 * #### 포트폴리오 추천 모델 구축
 
