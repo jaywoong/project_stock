@@ -127,7 +127,7 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 ### :two: 포트폴리오 추천 모델
 
-* #### **MVP**(Minimum Volatility Portfolio, 최소 분산 포트폴리오)
+* #### **MVP** (Minimum Volatility Portfolio, 최소 분산 포트폴리오)
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
