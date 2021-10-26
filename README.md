@@ -69,7 +69,7 @@ ___
 
   <img src="md-images/ERD.png" style="zoom:45%;" >
 
-- ### 프로젝트 산출물
+- ### Project Output
    * **WBS with Gantt Chart- [보러가기](https://docs.google.com/spreadsheets/d/1p-GPu5G6td5hkA7z9YXG2BhNy6Scw2k5/edit?usp=sharing&ouid=101019567947057551589&rtpof=true&sd=true) :heavy_check_mark:**
    * **와이어프레임 - [보러가기](md-images/wireframe.png) :heavy_check_mark:**
    * **요구사항 정의서 - [보러가기](https://docs.google.com/spreadsheets/d/1GvaA6mY9RHKyGHXjK7JKzFMXS99q8S-w2CC5LUHPJYQ/edit?usp=sharing) :heavy_check_mark:**
@@ -81,11 +81,11 @@ ___
 
 - ###  Team  Role
 
-<img src="md-images/팀.PNG" width="500" height="260" />
+<img src="md-images/팀.PNG" style="zoom:25%;" />
 
 * ### Project Plan 
 
-<img src="md-images/일정.PNG" width="560" height="280"/>
+<img src="md-images/일정.PNG" style="zoom:30%;" />
 
 <br>
 
@@ -95,13 +95,14 @@ ___
 
 * #### 주가 예측 모델 비교
 
-<center><img src="md-images/ARIMA.png" width="610" height="330"><center/>
+<center><img src="md-images/ARIMA.png" style="max-width:60%; height:auto;"><center/>
 
-<center><img src="md-images/fbprophet.png" width="610" height="330"><center/>
+<center><img src="md-images/fbprophet.png"style="max-width:60%; height:auto;"><center/>
 
 
+<center><img src="md-images/lstm.png" style="max-width:55%; height:auto;"><center/>
 
-<center><img src="md-images/lstm.png" width="510" height="280"><center/>
+
 
 ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교한 결과 LSTM이 주가 예측에서 가장 뛰어난 성능을 보였습니다.
 
@@ -127,7 +128,8 @@ ARIMA, fbprophet, LSTM 세 가지 모델을 통해 주가를 예측하고 비교
 
 Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측정하고, 최소분산포트폴리오를 활용하여 위험은 최소화하면서 초과수익을 얻을 수 있는 포트폴리오를 구성하였습니다.
 
-<center><img src="md-images/portfolio.jpg" width="500" height="250"><center/>
+<center><img src="md-images/portfolio.jpg" style="max-width:60%; height:auto;"><center/>
+
 
 * #### 포트폴리오 추천 모델 구축
 
