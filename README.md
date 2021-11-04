@@ -159,7 +159,7 @@ Sharpe Ratio를 통해 포트폴리오의 투자 위험 대비 수익률을 측�
 
   - 공통 거시 경제 지표 중 `S&P, CBOE` 는 `DataFinanceReader` 모듈을 통해 수집하고, `NASDAQ, futures2y, futures10y` 은  [Investing.com](https://kr.investing.com/indices/nasdaq-composite-historical-data)  스크래핑을 통해 수집했습니다.
 
-  - 개별주 관련 지표인 `거래량, atr, PER, PBR, 기관합계, 기타법인, 개인, 외국인합계` 는  [KRX](http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd) 의 데이터를 제공하는 `pykrx` 모듈을 통해 수집했습니다. 
+  - 개별주 관련 지표인 `거래량, atr, PER, PBR, 기관합계, 기타법인, 개인, 외국인합계` 는  [KRX](http://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd) 의 데이터를 제공하는 `pykrx` 모듈을 통해 수집했습니다.
 
   - [BIG KINDS](https://www.bigkinds.or.kr/) 에서 기업별 최근 일주일 뉴스기사를 스크래핑하여 수집해 웹에서 제공했습니다.
 
@@ -229,7 +229,7 @@ def news(request):
 
 ### :three:  Scheduling
 
-* 지속적인 서비스를 위해 특정 시간이 되면 주어진 스크립트를 자동으로 실행하는  `schedule` 라이브러리를 적용했습니다.
+* 지속적인 서비스를 위해 특정 시간이 되면 주어진 스크립트를 자동으로 실행하는  `schedule`라이브러리를 적용했습니다.
 
   ``` python
   # modeling/stock_db_schedule.py
